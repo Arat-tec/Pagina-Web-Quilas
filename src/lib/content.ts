@@ -47,7 +47,8 @@ const farImages = [
 type Entry = { title: string; badge?: string; description: string; alt: string };
 
 const withImages = (images: string[], entries: Entry[]): Slide[] =>
-  entries.map((entry, i) => ({ ...entry, image: images[i] }));
+  entries.map((entry, i) => ({ ...entry, image: images[i] ?? "" }));
+
 
 export const content = {
   es: {
