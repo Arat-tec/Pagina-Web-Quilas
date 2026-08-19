@@ -36,12 +36,6 @@ export function Hero({ t }: { t: Content }) {
           >
             {t.hero.primary}
           </a>
-          <a
-            href="#atractivos"
-            className="inline-flex min-h-12 items-center justify-center rounded-full border border-warm/50 bg-warm/10 px-7 text-base font-semibold text-forest-foreground backdrop-blur transition-colors hover:bg-warm/20"
-          >
-            {t.hero.secondary}
-          </a>
         </div>
       </div>
     </section>
