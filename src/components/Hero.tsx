@@ -1,6 +1,5 @@
 import heroImage from "@/assets/hero.jpg";
 import type { Content } from "@/lib/content";
-import { whatsappUrl } from "@/lib/site";
 
 export function Hero({ t }: { t: Content }) {
   return (
