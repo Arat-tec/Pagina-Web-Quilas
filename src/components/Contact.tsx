@@ -57,7 +57,7 @@ export function Contact({ t }: { t: Content }) {
                 <div className="min-w-0">
                   <p className="text-sm font-semibold text-foreground">{t.contact.facebook}</p>
                   <a
-                    href={https://m.me/lasquilashotel}
+                    href="https://m.me/lasquilashotel"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-base break-words text-muted-foreground underline-offset-4 hover:underline"
