@@ -2,6 +2,14 @@ import { Facebook, MapPin, MessageCircle, Navigation, Phone } from "lucide-react
 import type { Content } from "@/lib/content";
 import { googleMapsUrl, mapEmbedUrl, site, wazeUrl, whatsappUrl } from "@/lib/site";
 
+function AirbnbIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden>
+      <path d="M12 2C7.6 2 4 5.6 4 10c0 5.7 6.6 11.4 7.3 12a1 1 0 0 0 1.4 0C13.4 21.4 20 15.7 20 10c0-4.4-3.6-8-8-8zm0 11.5A3.5 3.5 0 1 1 12 6.5a3.5 3.5 0 0 1 0 7z" />
+    </svg>
+  );
+}
+
 export function Contact({ t }: { t: Content }) {
   return (
     <section id="contacto" className="scroll-mt-20 bg-secondary py-16 sm:py-24">
