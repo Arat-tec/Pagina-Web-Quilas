@@ -131,7 +131,7 @@ export function Contact({ t }: { t: Content }) {
                 href={wazeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-[#33CCFE] px-5 font-semibold text-foreground transition-colors hover:bg-secondary"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-border bg-[#33CCFE] px-5 font-semibold text-white transition-colors hover:bg-secondary"
               >
                 <Navigation className="size-5" aria-hidden />
                 {t.contact.openWaze}
