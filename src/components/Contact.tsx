@@ -122,7 +122,7 @@ export function Contact({ t }: { t: Content }) {
                 href={googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-5 font-semibold text-accent-foreground transition-opacity hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-accent px-5 font-semibold text-[#275DD1] transition-opacity hover:opacity-90"
               >
                 <Navigation className="size-5" aria-hidden />
                 {t.contact.openMaps}
