@@ -1,6 +1,5 @@
 import heroImage from "@/assets/hero.jpg";
 import type { Content } from "@/lib/content";
-import { whatsappUrl } from "@/lib/site";
 
 export function Hero({ t }: { t: Content }) {
   return (
@@ -29,9 +28,7 @@ export function Hero({ t }: { t: Content }) {
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
-            href={whatsappUrl(t.waMessage)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#contacto"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t.hero.primary}

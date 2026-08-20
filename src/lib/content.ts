@@ -69,7 +69,7 @@ export const content = {
       title: "Quilas",
       subtitle:
         "Reconecta contigo y con la naturaleza, en el corazón de la Huasteca Potosina.",
-      primary: "Reservar por WhatsApp",
+      primary: "Reserva",
       secondary: "Ver atractivos cercanos",
       alt: "Cabañas de madera del hotel Quilas rodeadas de selva al atardecer",
     },
@@ -219,6 +219,7 @@ export const content = {
       title: "Escríbenos y te apartamos lugar",
       phone: "Teléfono",
       whatsapp: "WhatsApp",
+      airbnb: "Reservar en Airbnb",
       facebook: "Facebook",
       address: "Dirección",
       directions: "Cómo llegar",
@@ -255,7 +256,7 @@ export const content = {
       title: "Quilas",
       subtitle:
         "Reconnect with yourself and with nature, in the heart of the Huasteca Potosina.",
-      primary: "Book on WhatsApp",
+      primary: "Book",
       secondary: "See nearby attractions",
       alt: "Wooden cabins of Quilas hotel surrounded by jungle at sunset",
     },
@@ -405,6 +406,7 @@ export const content = {
       title: "Message us and we'll hold your spot",
       phone: "Phone",
       whatsapp: "WhatsApp",
+      airbnb: "Book on Airbnb",
       facebook: "Facebook",
       address: "Address",
       directions: "Get directions",

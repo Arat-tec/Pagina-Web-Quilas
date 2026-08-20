@@ -10,6 +10,7 @@ export const site = {
   phoneDisplay: "+52 483 360 0114",
   phoneHref: "+524833600114",
   facebook: "https://m.me/lasquilashotel",
+  airbnb: "https://www.airbnb.mx/rooms/42141923",
   addressLine: "Huichihuayán, Huehuetlán, San Luis Potosí, México",
   // Coordenadas aproximadas de Huichihuayán (ajustar a la ubicación exacta).
   lat: 21.466659837207434,
