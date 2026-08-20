@@ -80,7 +80,7 @@ export function Contact({ t }: { t: Content }) {
                 href={site.airbnb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg[FE385C] px-6 font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg[#FE385C] px-6 font-semibold text-primary-foreground transition-opacity hover:opacity-90"
               >
                 <AirbnbIcon className="size-5" />
                 {t.contact.airbnb}
