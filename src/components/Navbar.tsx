@@ -126,9 +126,7 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
             ))}
             <li className="py-3">
               <a
-                href={whatsappUrl(t.waMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#contacto"
                 onClick={() => setOpen(false)}
                 className="flex min-h-12 items-center justify-center rounded-full bg-primary px-5 font-semibold text-primary-foreground"
               >
