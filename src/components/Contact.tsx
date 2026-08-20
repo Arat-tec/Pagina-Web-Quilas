@@ -62,7 +62,7 @@ export function Contact({ t }: { t: Content }) {
                     rel="noopener noreferrer"
                     className="text-base break-words text-muted-foreground underline-offset-4 hover:underline"
                   >
-                    /hotelquilas
+                    https://m.me/lasquilashotel
                   </a>
                 </div>
               </li>
