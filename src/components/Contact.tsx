@@ -89,7 +89,7 @@ export function Contact({ t }: { t: Content }) {
                 href={whatsappUrl(t.waMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-6 font-semibold text-forest-foreground transition-opacity hover:opacity-90"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-[26D367] px-6 font-semibold text-forest-foreground transition-opacity hover:opacity-90"
               >
                 <MessageCircle className="size-5" aria-hidden />
                 {t.contact.whatsapp}
