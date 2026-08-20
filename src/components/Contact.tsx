@@ -77,10 +77,19 @@ export function Contact({ t }: { t: Content }) {
 
             <div className="mt-8 flex flex-col gap-3">
               <a
-                href={whatsappUrl(t.waMessage)}
+                href={site.airbnb}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                <AirbnbIcon className="size-5" />
+                {t.contact.airbnb}
+              </a>
+              <a
+                href={whatsappUrl(t.waMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest px-6 font-semibold text-forest-foreground transition-opacity hover:opacity-90"
               >
                 <MessageCircle className="size-5" aria-hidden />
                 {t.contact.whatsapp}
