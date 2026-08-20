@@ -1,74 +1,92 @@
-# Cómo cambiar los colores de los botones de contacto
+# Cómo reemplazar el texto "Quilas" por un logo
 
-Hay dos niveles: las **clases de utilidad** que cada botón usa en `Contact.tsx`,
-y los **tokens de color** que alimentan esas clases en `src/styles.css`.
+El texto "Quilas" aparece en **4 lugares** del sitio. Aquí están todos, con el código exacto para cambiar cada uno por una imagen de logo.
 
----
+## Requisito previo
 
-## Nivel 1 — Las clases en `src/components/Contact.tsx` (líneas 78–104)
+Sube tu(s) archivo(s) de logo a la carpeta `src/assets/`. Si el logo necesita verse sobre fondos oscuros (hero/footer) usa una versión blanca (`logo_blanco.png`); sobre fondos claros (navbar sólido) usa una versión oscura (`logo_negro.png`). Si solo tienes un logo, sirve uno monocromático.
 
-Cada botón tiene su color en el atributo `className`. Estos son los tres botones del bloque de contacto:
+Luego importa la imagen arriba del componente, por ejemplo:
 
 ```tsx
-// Airbnb  → línea 83  → usa bg-primary + text-primary-foreground
-className="... bg-primary ... text-primary-foreground ..."
-
-// WhatsApp → línea 92 → usa bg-forest + text-forest-foreground
-className="... bg-forest ... text-forest-foreground ..."
-
-// Llamar  → línea 99  → borde + texto transparente (border border-border ... text-foreground)
-className="... border border-border ... text-foreground ..."
+import logoBlanco from "@/assets/logo_blanco.png";
+import logoNegro from "@/assets/logo_negro.png";
 ```
 
-Para cambiar el color de un botón, edita la clase `bg-*` y su `text-*-foreground` correspondiente.
-Ejemplos:
-- Airbnb en terracotta: cambiar `bg-primary` / `text-primary-foreground` → `bg-terracotta` / `text-terracotta-foreground`
-- WhatsApp en moss: cambiar `bg-forest` / `text-forest-foreground` → `bg-moss` / `text-moss-foreground`
+## 1. Hero (el "Quilas" grande del main) — `src/components/Hero.tsx`
 
-Otros botones de color (con su token) disponibles en tu paleta:
-- `bg-forest` / `bg-moss` / `bg-terracotta` / `bg-sand` / `bg-primary` / `bg-accent`
-- Cada uno con su `*-foreground` para el texto.
+Es el título grande sobre la foto del hero. Ahora mismo es texto:
 
-Los botones de Google Maps y Waze están en las **líneas 121–138** del mismo archivo
-(`bg-accent` el de Maps, y `border` transparente el de Waze).
-
----
-
-## Nivel 2 — Los valores reales del color en `src/styles.css`
-
-Las clases anteriores (`bg-forest`, `bg-terracotta`, etc.) apuntan a variables CSS
-definidas en `:root` (líneas 66–99). Si quieres cambiar el tono exacto de un color
-en todo el sitio, edita su valor `oklch(...)`:
-
-```css
-:root {
-  --forest:   oklch(0.3 0.045 154);   /* línea 70  → botón de WhatsApp */
-  --moss:     oklch(0.52 0.058 152);  /* línea 72  → botón de Airbnb (primary) */
-  --terracotta: oklch(0.58 0.114 39); /* línea 74  → botón de Google Maps (accent) */
-  --sand:     oklch(0.93 0.024 79);   /* línea 76 */
-  --warm:     oklch(0.98 0.008 85);   /* línea 77 → fondo del sitio */
-  --wood:     oklch(0.36 0.035 60);   /* línea 78 */
-}
+```tsx
+<h1 className="font-display mt-3 text-5xl leading-none font-semibold text-forest-foreground sm:text-7xl lg:text-8xl">
+  {t.hero.title}
+</h1>
 ```
 
-- `--moss` alimenta `bg-primary` (Airbnb y botón del Hero).
-- `--forest` alimenta `bg-forest` (WhatsApp).
-- `--terracotta` alimenta `bg-accent` (Google Maps).
+Reemplázalo por una imagen (fondo oscuro → logo blanco):
 
-Para modo oscuro, los equivalentes están en el bloque `.dark` (líneas 101–119).
+```tsx
+<img
+  src={logoBlanco}
+  alt="Quilas"
+  className="mt-3 h-24 w-auto sm:h-32 lg:h-40"
+/>
+```
 
----
+Ajusta `h-24`/`h-32`/`h-40` al tamaño que quieras.
 
-## Resumen rápido
+## 2. Navbar (logo arriba a la izquierda) — `src/components/Navbar.tsx`, líneas 44-52
 
-| Botón | Archivo / línea | Clase hoy | Token que controla el color |
-|---|---|---|---|
-| Airbnb | Contact.tsx:83 | `bg-primary` | `--moss` (styles.css:72) |
-| WhatsApp | Contact.tsx:92 | `bg-forest` | `--forest` (styles.css:70) |
-| Llamar | Contact.tsx:99 | `border-border` | `--border` (styles.css:96) |
-| Google Maps | Contact.tsx:125 | `bg-accent` | `--terracotta` (styles.css:74) |
-| Waze | Contact.tsx:132 | `border-border` | `--border` (styles.css:96) |
-| Hero (Reserva) | Hero.tsx | `bg-primary` | `--moss` (styles.css:72) |
+Ahora es texto "Quilas" que cambia de color según el fondo:
 
-Cambia solo las clases (Nivel 1) para un botón individual, o el valor `oklch`
-(Nivel 2) para cambiar ese color en toda la página.
+```tsx
+<a href="#inicio" className={cn("font-display truncate text-2xl ...")}>
+  Quilas
+</a>
+```
+
+Reemplázalo por un logo que cambie según el fondo (claro/oscuro):
+
+```tsx
+<a href="#inicio" className="inline-flex items-center">
+  <img
+    src={onSolid ? logoNegro : logoBlanco}
+    alt="Quilas"
+    className="h-9 w-auto"
+  />
+</a>
+```
+
+`onSolid` ya existe en el componente (`const onSolid = scrolled || open;`), así que el logo oscuro aparece cuando la navbar tiene fondo claro, y el blanco cuando está transparente sobre el hero.
+
+## 3. Footer — `src/components/Footer.tsx`, línea 17
+
+Fondo oscuro → logo blanco:
+
+```tsx
+<p className="font-display text-2xl font-semibold">Quilas</p>
+```
+
+Reemplázalo por:
+
+```tsx
+<img src={logoBlanco} alt="Quilas" className="h-10 w-auto" />
+```
+
+## 4. Texto del título del hero en el diccionario (opcional)
+
+`src/lib/content.ts` guarda el texto `"Quilas"` en `hero.title` (línea ~69 en ES y ~254 en EN). Si reemplazaste el `<h1>` por una imagen **ya no se usa**, pero déjalo o borra la línea; no afecta nada.
+
+## Resumen de archivos a editar
+
+| Lugar | Archivo | Línea |
+|---|---|---|
+| Hero (main) | `src/components/Hero.tsx` | 22-24 |
+| Navbar | `src/components/Navbar.tsx` | 44-52 |
+| Footer | `src/components/Footer.tsx` | 17 |
+
+## Notas
+
+- Usa `h-*` para la altura y `w-auto` para mantener proporciones; así el logo no se deforma.
+- Para accessibilidad y SEO, el `<h1>` del hero conviene mantenerlo como texto. Si lo cambias por imagen, asegúrate de que el `alt` del logo diga "Quilas" y considera dejar el subtítulo (que ya aporta contexto SEO).
+- Si tu logo es un PNG con transparencia, se ve bien sobre cualquier fondo.
