@@ -61,13 +61,17 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
     <div className="relative">
       <ul
         ref={trackRef}
-        className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-2 sm:gap-6 md:-mx-6 md:px-6"
+        className="no-scrollbar relative left-1/2 flex w-screen -translate-x-1/2 snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:gap-6"
+        style={{
+          paddingInline: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
+        }}
       >
         {slides.map((slide, i) => (
           <li
             key={slide.title}
-            className="w-[85%] shrink-0 snap-center sm:w-[70%] lg:w-[58%]"
+            className="w-[85%] shrink-0 snap-center sm:w-[70%] lg:w-[42%]"
           >
+
             <figure className="group relative overflow-hidden rounded-2xl bg-secondary shadow-sm">
               <div className="aspect-4/3 w-full overflow-hidden sm:aspect-16/10">
                 <img
