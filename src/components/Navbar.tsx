@@ -3,7 +3,8 @@ import { Menu, X } from "lucide-react";
 import type { Content, Lang } from "@/lib/content";
 import { whatsappUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import logoQuilas from "@/assets/logo_quilas_negro.png";
+import logoQuilas_negro from "@/assets/logo_quilas_negro.png";
+import logoQuilas_blanco from "@/assets/logo_quilas_blanco.png";
 
 type NavbarProps = {
   t: Content;
@@ -43,7 +44,11 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
     >
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 md:px-6">
         <a href="#inicio" className="flex items-center">
-  <img src={logoQuilas} alt="Quilas Hotel" className="h-10 w-auto md:h-12" />
+  <img
+    src={onSolid ? logoQuilas_negro : logoQuilas_blanco}
+    alt="Quilas Hotel"
+    className="h-10 w-auto md:h-12"
+  />
 </a>
 
         <div className="flex items-center gap-2">
