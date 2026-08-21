@@ -18,7 +18,11 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
     if (!track) return;
     const item = track.children[index] as HTMLElement | undefined;
     if (!item) return;
-    track.scrollTo({ left: item.offsetLeft - track.offsetLeft, behavior: "smooth" });
+    const padLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    track.scrollTo({
+      left: item.offsetLeft - track.offsetLeft - padLeft,
+      behavior: "smooth",
+    });
   }, []);
 
   useEffect(() => {
@@ -30,12 +34,13 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const items = Array.from(track.children) as HTMLElement[];
-        const center = track.scrollLeft + track.clientWidth / 2;
+        const padLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+        const center = track.scrollLeft + padLeft + 40;
         let best = 0;
         let bestDistance = Number.POSITIVE_INFINITY;
         items.forEach((item, i) => {
-          const itemCenter = item.offsetLeft - track.offsetLeft + item.clientWidth / 2;
-          const distance = Math.abs(itemCenter - center);
+          const itemStart = item.offsetLeft - track.offsetLeft;
+          const distance = Math.abs(itemStart - center);
           if (distance < bestDistance) {
             bestDistance = distance;
             best = i;
@@ -64,12 +69,13 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
         className="no-scrollbar relative left-1/2 flex w-screen -translate-x-1/2 snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:gap-6"
         style={{
           paddingInline: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
+          scrollPaddingInline: "max(1rem, calc((100vw - 72rem) / 2 + 1.5rem))",
         }}
       >
         {slides.map((slide, i) => (
           <li
             key={slide.title}
-            className="w-[85%] shrink-0 snap-center sm:w-[70%] lg:w-[42%]"
+            className="w-[85%] shrink-0 snap-start sm:w-[70%] lg:w-[42%]"
           >
 
             <figure className="group relative overflow-hidden rounded-2xl bg-secondary shadow-sm">
