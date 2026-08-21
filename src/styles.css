@@ -58,8 +58,8 @@
   --color-warm: var(--warm);
   --color-wood: var(--wood);
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "EB Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
 }
 
 
@@ -140,6 +140,7 @@
   h3,
   h4 {
     font-family: var(--font-display);
+    font-style: italic;
   }
 }
 
