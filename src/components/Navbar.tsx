@@ -47,7 +47,7 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
   <img
     src={onSolid ? logoQuilas_negro : logoQuilas_blanco}
     alt="Quilas Hotel"
-    className="h-10 w-auto md:h-12"
+    className="h-12 w-auto md:h-14"
   />
 </a>
 
