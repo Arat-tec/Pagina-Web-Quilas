@@ -13,7 +13,7 @@ export function Hero({ t }: { t: Content }) {
         decoding="async"
         className="absolute inset-0 -z-10 size-full object-cover"
       />
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-forest via-forest/50 to-forest/25" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-28 pb-16 md:px-6 sm:pb-24">
         <p className="text-xs font-semibold tracking-[0.25em] text-forest-foreground/85 uppercase">
