@@ -1,6 +1,7 @@
 import { Facebook, MessageCircle, Phone } from "lucide-react";
 import type { Content } from "@/lib/content";
 import { site, whatsappUrl } from "@/lib/site";
+import logoQuilasBlanco from "@/assets/logo_quilas_blanco.png";
 
 export function Footer({ t }: { t: Content }) {
   const links = [
@@ -14,7 +15,7 @@ export function Footer({ t }: { t: Content }) {
     <footer className="bg-forest text-forest-foreground">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3 md:px-6">
         <div>
-          <p className="font-display text-2xl font-semibold">Quilas</p>
+          <img src={logoQuilasBlanco} alt="Quilas Hotel" className="h-10 w-auto" />
           <p className="mt-2 text-sm opacity-80">{t.footer.tagline}</p>
           <p className="mt-1 text-sm opacity-80">{site.addressLine}</p>
         </div>
