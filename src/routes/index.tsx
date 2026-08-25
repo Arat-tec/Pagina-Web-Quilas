@@ -8,6 +8,7 @@ import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { LoadingScreen } from "@/components/LoadingScreen";
 import { content, type Lang } from "@/lib/content";
 import { whatsappUrl } from "@/lib/site";
 
@@ -39,6 +40,7 @@ function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      <LoadingScreen />
       <Navbar t={t} lang={lang} onToggleLang={() => setLang(lang === "es" ? "en" : "es")} />
 
       <main>
