@@ -123,7 +123,7 @@ export const content = {
           title: "Sótano de las Huahuas, Aquismón",
           badge: "20 min",
           description:
-            "Con 512 metros de profundidad, famosa por sus espectaculos de aves.",
+            "Con 478 metros de profundidad, famosa por sus espectaculos de aves.",
           alt: "Boca de una caverna natural con aves volando al atardecer",
         },
         {
@@ -160,42 +160,42 @@ export const content = {
           title: "Río Tambaque",
           badge: "40 min",
           description:
-            "Río de aguas color turquesa entre formaciones rocosas, popular para nadar y hacer rappel.",
-          alt: "Río turquesa entre grandes rocas redondeadas",
+            "Río de aguas turquesa entre formaciones rocosas, perfecta para nadar y descansar.",
+          alt: "Río turquesa entre grandes rocas",
         },
         {
           title: "Sótano de las Golondrinas, Aquismón",
           badge: "1 h",
           description:
-            "Uno de los abismos naturales más profundos del mundo, hogar de miles de golondrinas y vencejos.",
+            "Uno de los abismos naturales más profundos del mundo, hogar de miles de aves.",
           alt: "Vista aérea de un enorme abismo natural con aves saliendo",
         },
         {
           title: "Puente de Dios, Aquismón",
           badge: "1 h 30 min",
           description:
-            "Formación natural con cascadas y pozas turquesa dentro de una cueva semiabierta.",
+            "Formación natural con cascadas y pozas turquesa dentro de una cueva.",
           alt: "Pozas turquesa dentro de una cueva con haces de luz",
         },
         {
           title: "Cascadas de Tamasopo",
           badge: "1 h 30 min",
           description:
-            "Serie de caídas de agua entre pozas naturales ideales para nadar.",
+            "Serie de cascadas de agua naturales con sitios recreativos.",
           alt: "Cascadas cayendo sobre pozas naturales turquesa",
         },
         {
           title: "Puente de Dios, Tamasopo",
           badge: "1 h 35 min",
           description:
-            "Cascadas y pozas de aguas turquesa rodeadas de vegetación exuberante.",
+            "Cascadas y pozas de aguas rodeadas de vegetación exuberante.",
           alt: "Pozas turquesa con pasarela de madera y vegetación",
         },
         {
-          title: "Cascadas de Tamul",
+          title: "Cascada de Tamul",
           badge: "1 h 40 min",
           description:
-            "La caída de agua más alta de la Huasteca, accesible en recorrido en lancha por el río Tampaón.",
+            "La caída de agua más alta de la Huasteca, con recorrido en lancha.",
           alt: "Gran cascada vista desde una lancha en el río",
         },
       ]),
