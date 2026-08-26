@@ -91,7 +91,7 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
                 />
               </div>
               {/* Scrim para asegurar legibilidad del texto sobre cualquier foto */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-4 text-forest-foreground sm:p-6">
                 {slide.badge ? (
                   <span className="mb-2 inline-block rounded-full bg-terracotta px-3 py-1 text-xs font-semibold tracking-wide text-terracotta-foreground uppercase">
