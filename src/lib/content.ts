@@ -137,7 +137,7 @@ export const content = {
           title: "Museo Leonora Carrington, Xilitla",
           badge: "25 min",
           description:
-            "Espacio dedicado a la obra de la artista surrealista, en el corazón de Xilitla.",
+            "Pinturas, esculturas y objetos que revelan su fascinación por lo surreal, mágico y simbólico.",
           alt: "Fachada colorida de museo con escultura en la entrada",
         },
         {
