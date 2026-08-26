@@ -144,7 +144,7 @@ export const content = {
           title: 'Castillo de la Salud "Beto Ramón", Axtla',
           badge: "25 min",
           description:
-            "Centro herbolario de conocimiento ancestral, basado en relatos bíblicos como la Torre de Babel y el Arca de Noé.",
+            "Centro herbolario basado en relatos bíblicos como la Torre de Babel y el Arca de Noé.",
           alt: "Castillo colorido con naturaleza",
         },
       ]),
