@@ -71,13 +71,13 @@ export const content = {
         "Reconecta contigo y con la naturaleza, en el corazón de la Huasteca Potosina.",
       primary: "Reserva",
       secondary: "Ver atractivos cercanos",
-      alt: "Cabañas de madera del hotel Quilas rodeadas de selva al atardecer",
+      alt: "Cabañas de madera del hotel Quilas rodeadas de naturaleza al atardecer",
     },
     rooms: {
       eyebrow: "Dónde dormir",
       title: "Nuestras habitaciones",
       intro:
-        "Espacios sencillos y cómodos, rodeados de verde, pensados para descansar de verdad.",
+        "Espacios cómodos, rodeados de naturaleza, pensados para descansar de verdad.",
       slides: withImages(roomImages, [
         {
           title: "Cabaña",
@@ -109,43 +109,43 @@ export const content = {
           title: "Río El Nacimiento",
           badge: "10 min",
           description:
-            "Río de aguas cristalinas turquesa, ideal para nadar; el atractivo más cercano al hotel.",
+            "Nacimiento de aguas cristalinas, ideal para el calor.",
           alt: "Río de aguas turquesa entre vegetación tropical",
         },
         {
           title: "Vado de Huichihuayán",
           badge: "10 min",
           description:
-            "Zona de río de fácil acceso, perfecta para un chapuzón rápido o un día de campo.",
+            "Río de fácil acceso, perfecta para un chapuzón rápido o andar en kayak.",
           alt: "Vado de río poco profundo con árboles en las orillas",
         },
         {
           title: "Sótano de las Huahuas, Aquismón",
           badge: "20 min",
           description:
-            "Impresionante caverna natural, famosa por sus loros y guacamayas al atardecer.",
+            "Con 512 metros de profundidad, famosa por sus espectaculos de aves.",
           alt: "Boca de una caverna natural con aves volando al atardecer",
         },
         {
           title: "Las Pozas de Edward James, Xilitla",
           badge: "25 min",
           description:
-            "Jardín escultórico surrealista entre la selva, patrimonio artístico único en el mundo.",
+            "Jardín escultórico evocando al jardin del Edén donde el surrealismo cobra vida entre cascadas y flores.",
           alt: "Escaleras y columnas surrealistas cubiertas de vegetación",
         },
         {
           title: "Museo Leonora Carrington, Xilitla",
           badge: "25 min",
           description:
-            "Espacio dedicado a la obra de la artista surrealista, en el corazón del pueblo mágico de Xilitla.",
+            "Espacio dedicado a la obra de la artista surrealista, en el corazón de Xilitla.",
           alt: "Fachada colorida de museo con escultura en la entrada",
         },
         {
           title: 'Castillo de la Salud "Beto Ramón", Axtla',
           badge: "25 min",
           description:
-            "Construcción emblemática de la región, ideal para una parada fotográfica.",
-          alt: "Castillo blanco con torres rodeado de palmeras",
+            "Centro herbolario de conocimiento ancestral, basado en relatos bíblicos como la Torre de Babel y el Arca de Noé.",
+          alt: "Castillo colorido con naturaleza",
         },
       ]),
     },
