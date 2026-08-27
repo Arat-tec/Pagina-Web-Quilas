@@ -29,7 +29,7 @@ export function Hero({ t }: { t: Content }) {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href="#contacto"
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            className="inline-flex min-h-12 self-start items-center justify-center rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
           >
             {t.hero.primary}
           </a>
