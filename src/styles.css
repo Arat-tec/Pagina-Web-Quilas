@@ -71,7 +71,7 @@
   --forest-foreground: oklch(0.98 0.008 85);
   --moss: oklch(0.52 0.058 152);
   --moss-foreground: oklch(0.98 0.008 85);
-  --terracotta: oklch(0.58 0.114 39);
+  --terracotta: #d37300;
   --terracotta-foreground: oklch(0.98 0.008 85);
   --sand: #FCF7F1;
   --warm: oklch(0.98 0.008 85);
