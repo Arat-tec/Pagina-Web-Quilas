@@ -39,7 +39,7 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
         onSolid
           ? "border-b border-border bg-background/95 backdrop-blur"
-          : "bg-linear-to-b from-forest/60 to-transparent",
+          : "bg-linear-to-b from-black/50 to-transparent",
       )}
     >
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 md:px-6">
@@ -47,7 +47,7 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
   <img
     src={onSolid ? logoQuilas_negro : logoQuilas_blanco}
     alt="Quilas Hotel"
-    className="h-12 w-auto md:h-14"
+    className="h-10 w-auto md:h-12"
   />
 </a>
 
