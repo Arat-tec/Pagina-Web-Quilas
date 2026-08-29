@@ -258,13 +258,13 @@ export const content = {
         "Reconnect with yourself and with nature, in the heart of the Huasteca Potosina.",
       primary: "Book",
       secondary: "See nearby attractions",
-      alt: "Wooden cabins of Quilas hotel surrounded by jungle at sunset",
+      alt: "Wooden cabins of Quilas hotel surrounded by nature at sunset",
     },
     rooms: {
       eyebrow: "Where to sleep",
       title: "Our rooms",
       intro:
-        "Simple, comfortable spaces surrounded by green, made for actually resting.",
+        "Comfortable spaces, surrounded by nature, made for real rest.",
       slides: withImages(roomImages, [
         {
           title: "Cabin",
@@ -290,49 +290,49 @@ export const content = {
       eyebrow: "Under 35 minutes away",
       title: "Right around the corner",
       intro:
-        "We are exactly where you want to be: leave early and come back to rest the same day.",
+        "We're right at the sweet spot: leave early and come back to rest the same day.",
       slides: withImages(nearImages, [
         {
           title: "El Nacimiento River",
           badge: "10 min",
           description:
-            "Crystal-clear turquoise river, perfect for swimming; the closest spot to the hotel.",
+            "Crystal-clear spring water, ideal for the heat.",
           alt: "Turquoise river surrounded by tropical vegetation",
         },
         {
           title: "Huichihuayán Ford",
           badge: "10 min",
           description:
-            "Easy-access river area, perfect for a quick swim or a picnic day.",
+            "Easy-access river, perfect for a quick dip or kayaking.",
           alt: "Shallow river ford with trees along the banks",
         },
         {
           title: "Sótano de las Huahuas, Aquismón",
           badge: "20 min",
           description:
-            "Impressive natural cavern, famous for its parrots and macaws at sunset.",
+            "478 meters deep, famous for its displays of birds.",
           alt: "Mouth of a natural cavern with birds flying at sunset",
         },
         {
           title: "Las Pozas by Edward James, Xilitla",
           badge: "25 min",
           description:
-            "Surrealist sculpture garden in the jungle, an artistic landmark unique in the world.",
+            "A sculpture garden evoking the Garden of Eden, where surrealism comes to life among waterfalls and flowers.",
           alt: "Surrealist stairways and columns covered in vegetation",
         },
         {
           title: "Leonora Carrington Museum, Xilitla",
           badge: "25 min",
           description:
-            "Dedicated to the surrealist artist's work, in the heart of the magic town of Xilitla.",
+            "Paintings, sculptures and objects that reveal her fascination with the surreal, the magical and the symbolic.",
           alt: "Colorful museum facade with a sculpture at the entrance",
         },
         {
           title: '"Beto Ramón" Health Castle, Axtla',
           badge: "25 min",
           description:
-            "An emblematic building of the region and a great photo stop.",
-          alt: "White castle with towers surrounded by palm trees",
+            "An herbal-medicine center based on biblical tales such as the Tower of Babel and Noah's Ark.",
+          alt: "Colorful castle surrounded by nature",
         },
       ]),
     },
@@ -347,43 +347,43 @@ export const content = {
           title: "Tambaque River",
           badge: "40 min",
           description:
-            "Turquoise river among rock formations, popular for swimming and rappelling.",
-          alt: "Turquoise river between large rounded rocks",
+            "Turquoise river among rock formations, perfect for swimming and relaxing.",
+          alt: "Turquoise river between large rocks",
         },
         {
           title: "Sótano de las Golondrinas, Aquismón",
           badge: "1 h",
           description:
-            "One of the deepest natural abysses in the world, home to thousands of swifts and swallows.",
+            "One of the deepest natural abysses in the world, home to thousands of birds.",
           alt: "Aerial view of a huge natural pit with birds flying out",
         },
         {
           title: "Puente de Dios, Aquismón",
           badge: "1 h 30 min",
           description:
-            "Natural formation with waterfalls and turquoise pools inside a semi-open cave.",
+            "Natural formation with waterfalls and turquoise pools inside a cave.",
           alt: "Turquoise pools inside a cave with light beams",
         },
         {
           title: "Tamasopo Waterfalls",
           badge: "1 h 30 min",
           description:
-            "A series of waterfalls between natural pools that are ideal for swimming.",
+            "A series of natural waterfalls with recreational areas.",
           alt: "Waterfalls falling into turquoise natural pools",
         },
         {
           title: "Puente de Dios, Tamasopo",
           badge: "1 h 35 min",
           description:
-            "Waterfalls and turquoise pools surrounded by exuberant vegetation.",
+            "Waterfalls and pools surrounded by lush vegetation.",
           alt: "Turquoise pools with a wooden walkway and vegetation",
         },
         {
           title: "Tamul Waterfall",
           badge: "1 h 40 min",
           description:
-            "The tallest waterfall in the Huasteca, reached by boat along the Tampaón river.",
-          alt: "Tall waterfall seen from a boat on the river",
+            "The tallest waterfall in the Huasteca, reached by a boat ride.",
+          alt: "Large waterfall seen from a boat on the river",
         },
       ]),
     },

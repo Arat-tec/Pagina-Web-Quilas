@@ -7,9 +7,21 @@ type CarouselProps = {
   slides: Slide[];
   labels: { prev: string; next: string; goTo: string };
   priority?: boolean;
+  /**
+   * En móvil, saca la descripción de la foto y la muestra en un bloque de texto
+   * debajo de la imagen (badge y título siguen sobre la foto). En tablet/desktop
+   * no cambia nada. Úsalo en carruseles con descripciones largas (atractivos),
+   * no en los de habitaciones.
+   */
+  splitCaptionOnMobile?: boolean;
 };
 
-export function Carousel({ slides, labels, priority = false }: CarouselProps) {
+export function Carousel({
+  slides,
+  labels,
+  priority = false,
+  splitCaptionOnMobile = false,
+}: CarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
 
@@ -73,45 +85,64 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
         }}
       >
         {slides.map((slide, i) => (
-          <li
-            key={slide.title}
-            className="w-[85%] shrink-0 snap-start sm:w-[70%] lg:w-[42%]"
-          >
-
-            <figure className="group relative overflow-hidden rounded-2xl bg-secondary shadow-sm">
-              <div className="aspect-4/3 w-full overflow-hidden sm:aspect-16/10">
-                <img
-                  src={slide.image}
-                  alt={slide.alt}
-                  width={1400}
-                  height={933}
-                  loading={priority && i === 0 ? "eager" : "lazy"}
-                  decoding="async"
-                  className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
+          <li key={slide.title} className="w-[92%] shrink-0 snap-start sm:w-[70%] lg:w-[42%]">
+            <figure className="group">
+              <div
+                className={cn(
+                  "relative overflow-hidden rounded-2xl bg-secondary shadow-sm",
+                  "motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out",
+                  i !== active && "motion-safe:scale-[0.98]",
+                )}
+              >
+                <div className="aspect-4/3 w-full overflow-hidden sm:aspect-16/10">
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    width={1400}
+                    height={933}
+                    loading={priority && i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                {/* Scrim para asegurar legibilidad del texto sobre cualquier foto */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
+                <figcaption className="absolute inset-x-0 bottom-0 p-4 text-forest-foreground sm:p-6">
+                  {slide.badge ? (
+                    <span className="mb-2 inline-block rounded-full bg-terracotta px-3 py-1 text-xs font-semibold tracking-wide text-terracotta-foreground uppercase">
+                      {slide.badge}
+                    </span>
+                  ) : null}
+                  <h3 className="text-xl leading-tight font-semibold sm:text-2xl">{slide.title}</h3>
+                  {slide.description ? (
+                    <p
+                      className={cn(
+                        "mt-1 max-w-prose text-sm opacity-90 sm:text-base",
+                        splitCaptionOnMobile && "hidden sm:block",
+                      )}
+                    >
+                      {slide.description}
+                    </p>
+                  ) : null}
+                </figcaption>
               </div>
-              {/* Scrim para asegurar legibilidad del texto sobre cualquier foto */}
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/90 via-black/50 to-transparent" />
-              <figcaption className="absolute inset-x-0 bottom-0 p-4 text-forest-foreground sm:p-6">
-                {slide.badge ? (
-                  <span className="mb-2 inline-block rounded-full bg-terracotta px-3 py-1 text-xs font-semibold tracking-wide text-terracotta-foreground uppercase">
-                    {slide.badge}
-                  </span>
-                ) : null}
-                <h3 className="text-xl leading-tight font-semibold sm:text-2xl">
-                  {slide.title}
-                </h3>
-                <p className="mt-1 max-w-prose text-sm opacity-90 sm:text-base">
+              {splitCaptionOnMobile && slide.description ? (
+                // Padding en % del ancho de la FOTO (≈ ancho del <figure>): el texto
+                // queda visiblemente más angosto que la imagen, con aire a ambos lados.
+                <p className="mt-4 px-[6%] text-sm leading-relaxed text-muted-foreground sm:hidden">
                   {slide.description}
                 </p>
-              </figcaption>
+              ) : null}
             </figure>
           </li>
         ))}
       </ul>
 
-      <div className="mt-4 flex items-center justify-between gap-4">
-        <div className="flex flex-wrap gap-2">
+      <div className="mt-4 flex items-center justify-center gap-4 sm:justify-between">
+        {/* Fila de dots: nunca envuelve (flex-nowrap + botones shrink-0 de 32px);
+            6 dots = 232px, cabe de sobra en cualquier móvil. overflow-x-clip es
+            solo una red de seguridad. */}
+        <div className="flex flex-nowrap justify-center gap-2 overflow-x-clip sm:justify-start">
           {slides.map((slide, i) => (
             <button
               key={slide.title}
@@ -119,11 +150,11 @@ export function Carousel({ slides, labels, priority = false }: CarouselProps) {
               onClick={() => scrollTo(i)}
               aria-label={`${labels.goTo} ${i + 1}`}
               aria-current={i === active}
-              className="grid size-11 place-items-center rounded-full"
+              className="grid size-8 shrink-0 place-items-center rounded-full"
             >
               <span
                 className={cn(
-                  "block h-2 rounded-full transition-all",
+                  "block h-2 rounded-full transition-[width,background-color]",
                   i === active ? "w-6 bg-primary" : "w-2 bg-border",
                 )}
               />

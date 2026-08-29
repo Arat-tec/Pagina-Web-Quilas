@@ -15,7 +15,7 @@ export function Hero({ t }: { t: Content }) {
       />
       <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
 
-      <div className="mx-auto w-full max-w-6xl px-4 pt-28 pb-16 md:px-6 sm:pb-24">
+      <div className="mx-auto w-full max-w-6xl px-4 pt-28 pb-10 md:px-6 sm:pb-16">
         <p className="text-xs font-semibold tracking-[0.25em] text-forest-foreground/85 uppercase">
           {t.hero.eyebrow}
         </p>
