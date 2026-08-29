@@ -113,9 +113,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className="no-js">
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');",
+          }}
+        />
       </head>
       <body>
         {children}

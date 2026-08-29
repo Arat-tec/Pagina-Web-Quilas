@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { Section } from "@/components/Section";
 import { Carousel } from "@/components/Carousel";
+import { Reveal } from "@/components/Reveal";
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -46,47 +47,57 @@ function Index() {
       <main>
         <Hero t={t} />
 
-        <Section
-          id="habitaciones"
-          eyebrow={t.rooms.eyebrow}
-          title={t.rooms.title}
-          intro={t.rooms.intro}
-          tone="sand"
-        >
-          <Carousel slides={t.rooms.slides} labels={t.carousel} />
-        </Section>
+        <Reveal>
+          <Section
+            id="habitaciones"
+            eyebrow={t.rooms.eyebrow}
+            title={t.rooms.title}
+            intro={t.rooms.intro}
+            tone="sand"
+          >
+            <Carousel slides={t.rooms.slides} labels={t.carousel} />
+          </Section>
+        </Reveal>
 
-        <Section
-          id="atractivos"
-          eyebrow={t.near.eyebrow}
-          title={t.near.title}
-          intro={t.near.intro}
-        >
-          <Carousel slides={t.near.slides} labels={t.carousel} />
-        </Section>
+        <Reveal>
+          <Section
+            id="atractivos"
+            eyebrow={t.near.eyebrow}
+            title={t.near.title}
+            intro={t.near.intro}
+          >
+            <Carousel slides={t.near.slides} labels={t.carousel} splitCaptionOnMobile />
+          </Section>
+        </Reveal>
 
-        <Section
-          id="escapadas"
-          eyebrow={t.far.eyebrow}
-          title={t.far.title}
-          intro={t.far.intro}
-          tone="sand"
-        >
-          <Carousel slides={t.far.slides} labels={t.carousel} />
-          <div className="mt-10 flex justify-center">
-            <a
-              href={whatsappUrl(t.waMessage)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              {t.far.cta}
-            </a>
-          </div>
-        </Section>
+        <Reveal>
+          <Section
+            id="escapadas"
+            eyebrow={t.far.eyebrow}
+            title={t.far.title}
+            intro={t.far.intro}
+            tone="sand"
+          >
+            <Carousel slides={t.far.slides} labels={t.carousel} splitCaptionOnMobile />
+            <div className="mt-10 flex justify-center">
+              <a
+                href={whatsappUrl(t.waMessage)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                {t.far.cta}
+              </a>
+            </div>
+          </Section>
+        </Reveal>
 
-        <About t={t} />
-        <Contact t={t} />
+        <Reveal>
+          <About t={t} />
+        </Reveal>
+        <Reveal>
+          <Contact t={t} />
+        </Reveal>
       </main>
 
       <Footer t={t} />
