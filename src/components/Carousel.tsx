@@ -102,6 +102,7 @@ export function Carousel({
                     height={933}
                     loading={priority && i === 0 ? "eager" : "lazy"}
                     decoding="async"
+                    style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
                     className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
