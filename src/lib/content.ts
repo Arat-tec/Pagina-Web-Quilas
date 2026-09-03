@@ -212,9 +212,11 @@ export const content = {
           badge: "1 h 40 min",
           description:
             "La caída de agua más alta de la Huasteca, con recorrido en lancha.",
-          alt: "Gran cascada vista desde una lancha en el río",
-        },
-      ]),
+           alt: "Gran cascada vista desde una lancha en el río",
+         },
+        ],
+        farPositions,
+      ),
     },
     about: {
       eyebrow: "Sobre nosotros",
@@ -401,9 +403,11 @@ export const content = {
           badge: "1 h 40 min",
           description:
             "The tallest waterfall in the Huasteca, reached by a boat ride.",
-          alt: "Large waterfall seen from a boat on the river",
-        },
-      ]),
+           alt: "Large waterfall seen from a boat on the river",
+         },
+        ],
+        farPositions,
+      ),
     },
     about: {
       eyebrow: "About us",
