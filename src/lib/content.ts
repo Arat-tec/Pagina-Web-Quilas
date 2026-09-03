@@ -22,6 +22,8 @@ export type Slide = {
   badge?: string;
   description: string;
   alt: string;
+  /** Valor CSS de object-position para acomodar la foto dentro del marco (p. ej. "center bottom"). */
+  objectPosition?: string | undefined;
 };
 
 const roomImages = [roomCabana, roomDoble, roomTriple];
@@ -44,10 +46,22 @@ const farImages = [
   atrTamul,
 ];
 
+// Acomodo de la foto dentro del marco del carrusel (object-position).
+// Tambaque: la foto es vertical y el agua está abajo; se ancla a la parte baja.
+const farPositions = ["center bottom"];
+
 type Entry = { title: string; badge?: string; description: string; alt: string };
 
-const withImages = (images: string[], entries: Entry[]): Slide[] =>
-  entries.map((entry, i) => ({ ...entry, image: images[i] ?? "" }));
+const withImages = (
+  images: string[],
+  entries: Entry[],
+  positions: string[] = [],
+): Slide[] =>
+  entries.map((entry, i) => ({
+    ...entry,
+    image: images[i] ?? "",
+    objectPosition: positions[i],
+  }));
 
 
 export const content = {
@@ -155,7 +169,9 @@ export const content = {
       intro:
         "Los grandes clásicos de la Huasteca, todos alcanzables en una excursión de un día.",
       cta: "Reserva y vive todo esto",
-      slides: withImages(farImages, [
+      slides: withImages(
+        farImages,
+        [
         {
           title: "Río Tambaque",
           badge: "40 min",
@@ -196,9 +212,11 @@ export const content = {
           badge: "1 h 40 min",
           description:
             "La caída de agua más alta de la Huasteca, con recorrido en lancha.",
-          alt: "Gran cascada vista desde una lancha en el río",
-        },
-      ]),
+           alt: "Gran cascada vista desde una lancha en el río",
+         },
+        ],
+        farPositions,
+      ),
     },
     about: {
       eyebrow: "Sobre nosotros",
@@ -342,7 +360,9 @@ export const content = {
       intro:
         "The great classics of the Huasteca, all reachable on a day trip.",
       cta: "Book now and live all of this",
-      slides: withImages(farImages, [
+      slides: withImages(
+        farImages,
+        [
         {
           title: "Tambaque River",
           badge: "40 min",
@@ -383,9 +403,11 @@ export const content = {
           badge: "1 h 40 min",
           description:
             "The tallest waterfall in the Huasteca, reached by a boat ride.",
-          alt: "Large waterfall seen from a boat on the river",
-        },
-      ]),
+           alt: "Large waterfall seen from a boat on the river",
+         },
+        ],
+        farPositions,
+      ),
     },
     about: {
       eyebrow: "About us",
