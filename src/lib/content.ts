@@ -169,7 +169,9 @@ export const content = {
       intro:
         "Los grandes clásicos de la Huasteca, todos alcanzables en una excursión de un día.",
       cta: "Reserva y vive todo esto",
-      slides: withImages(farImages, [
+      slides: withImages(
+        farImages,
+        [
         {
           title: "Río Tambaque",
           badge: "40 min",
@@ -356,7 +358,9 @@ export const content = {
       intro:
         "The great classics of the Huasteca, all reachable on a day trip.",
       cta: "Book now and live all of this",
-      slides: withImages(farImages, [
+      slides: withImages(
+        farImages,
+        [
         {
           title: "Tambaque River",
           badge: "40 min",
