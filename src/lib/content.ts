@@ -22,6 +22,8 @@ export type Slide = {
   badge?: string;
   description: string;
   alt: string;
+  /** Valor CSS de object-position para acomodar la foto dentro del marco (p. ej. "center bottom"). */
+  objectPosition?: string;
 };
 
 const roomImages = [roomCabana, roomDoble, roomTriple];
@@ -44,10 +46,22 @@ const farImages = [
   atrTamul,
 ];
 
+// Acomodo de la foto dentro del marco del carrusel (object-position).
+// Tambaque: la foto es vertical y el agua está abajo; se ancla a la parte baja.
+const farPositions = ["center bottom"];
+
 type Entry = { title: string; badge?: string; description: string; alt: string };
 
-const withImages = (images: string[], entries: Entry[]): Slide[] =>
-  entries.map((entry, i) => ({ ...entry, image: images[i] ?? "" }));
+const withImages = (
+  images: string[],
+  entries: Entry[],
+  positions: string[] = [],
+): Slide[] =>
+  entries.map((entry, i) => ({
+    ...entry,
+    image: images[i] ?? "",
+    objectPosition: positions[i],
+  }));
 
 
 export const content = {
