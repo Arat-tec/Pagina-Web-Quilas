@@ -23,7 +23,7 @@ export type Slide = {
   description: string;
   alt: string;
   /** Valor CSS de object-position para acomodar la foto dentro del marco (p. ej. "center bottom"). */
-  objectPosition?: string;
+  objectPosition?: string | undefined;
 };
 
 const roomImages = [roomCabana, roomDoble, roomTriple];
