@@ -116,8 +116,6 @@ export const content = {
     near: {
       eyebrow: "A menos de 35 minutos",
       title: "Lo que tienes a la vuelta",
-      intro:
-        "Estamos en el punto justo para salir temprano y regresar a descansar el mismo día.",
       slides: withImages(nearImages, [
         {
           title: "Río El Nacimiento",
@@ -166,8 +164,6 @@ export const content = {
     far: {
       eyebrow: "De 35 minutos a 1 h 40",
       title: "Un poco más lejos, pero vale la pena",
-      intro:
-        "Los grandes clásicos de la Huasteca, todos alcanzables en una excursión de un día.",
       cta: "Reserva y vive todo esto",
       slides: withImages(
         farImages,
@@ -307,8 +303,6 @@ export const content = {
     near: {
       eyebrow: "Under 35 minutes away",
       title: "Right around the corner",
-      intro:
-        "We're right at the sweet spot: leave early and come back to rest the same day.",
       slides: withImages(nearImages, [
         {
           title: "El Nacimiento River",
@@ -357,8 +351,6 @@ export const content = {
     far: {
       eyebrow: "From 35 minutes to 1 h 40",
       title: "A bit farther, absolutely worth it",
-      intro:
-        "The great classics of the Huasteca, all reachable on a day trip.",
       cta: "Book now and live all of this",
       slides: withImages(
         farImages,
