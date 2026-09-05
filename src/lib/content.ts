@@ -163,7 +163,7 @@ export const content = {
     },
     far: {
       eyebrow: "De 35 minutos a 1 h 40",
-      title: "Un poco más lejos, pero vale la pena",
+      title: "Un poco más lejos que valen la pena",
       cta: "Reserva y vive todo esto",
       slides: withImages(
         farImages,
