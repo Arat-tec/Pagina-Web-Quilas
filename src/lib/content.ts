@@ -269,7 +269,7 @@ export const content = {
       eyebrow: "Huichihuayán, San Luis Potosí",
       title: "Quilas",
       subtitle:
-        "Reconnect with yourself and with nature, in the heart of the Huasteca Potosina.",
+        "Reconnect with yourself and the natural world, deep in the heart of the Huasteca Potosina.",
       primary: "Book",
       secondary: "See nearby attractions",
       alt: "Wooden cabins of Quilas hotel surrounded by nature at sunset",
@@ -312,7 +312,7 @@ export const content = {
           alt: "Turquoise river surrounded by tropical vegetation",
         },
         {
-          title: "Huichihuayán Ford",
+          title: "Huichihuayán Vado",
           badge: "10 min",
           description:
             "Easy-access river, perfect for a quick dip or kayaking.",
@@ -340,7 +340,7 @@ export const content = {
           alt: "Colorful museum facade with a sculpture at the entrance",
         },
         {
-          title: '"Beto Ramón" Health Castle, Axtla',
+          title: '"Beto Ramón" Castillo de la Salud, Axtla',
           badge: "25 min",
           description:
             "An herbal-medicine center based on biblical tales such as the Tower of Babel and Noah's Ark.",
