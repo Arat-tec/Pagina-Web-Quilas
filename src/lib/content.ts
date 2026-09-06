@@ -121,7 +121,7 @@ export const content = {
           title: "Río El Nacimiento",
           badge: "10 min",
           description:
-            "Nacimiento de aguas cristalinas, ideal para el calor.",
+            "Nacimiento de aguas cristalinas, ideal para el calor huasteco.",
           alt: "Río de aguas turquesa entre vegetación tropical",
         },
         {
