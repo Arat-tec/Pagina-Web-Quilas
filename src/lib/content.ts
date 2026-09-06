@@ -248,7 +248,7 @@ export const content = {
       rights: "Todos los derechos reservados.",
     },
     waMessage:
-      "¡Hola! Me interesa reservar en Quilas. ¿Me pueden dar disponibilidad y precios?",
+      "¡Hola! Me interesa reservar en Quilas. ¿Me pueden mandar información?",
     waFab: "Escribir por WhatsApp",
     carousel: { prev: "Anterior", next: "Siguiente", goTo: "Ir a la foto" },
   },
