@@ -402,7 +402,7 @@ export const content = {
       title: "A place to slow down",
       body: [
         "At Quilas, nature surrounds us and that, on purpose, is what makes everything else possible. Here you can slow down, reconnect with yourself and your surroundings, and leave the routine behind.",
-        "We want the Huasteca to surprise you: to try new flavors, discover corners you didn't expect, and take home a bit of its traditions. That's why we're with you every step of the way from recommending where to go and what to eat, to getting you a taxi or the meat for your barbecue — so the only thing you have to worry about is enjoying yourself.",
+        "We want the Huasteca to surprise you: to try new flavors, discover corners you didn't expect, and take home a bit of its traditions. That's why we're with you every step of the way from recommending where to go and what to eat, to getting you a taxi or the meat for your barbecue so the only thing you have to worry about is enjoying yourself.",
       ],
       alt: "Wooden terrace with hammocks surrounded by tropical greenery",
       
