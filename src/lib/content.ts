@@ -230,7 +230,7 @@ export const content = {
     },
     contact: {
       eyebrow: "Contacto",
-      title: "Escríbenos y te apartamos lugar",
+      title: "Cuéntanos cuándo llegas",
       phone: "Teléfono",
       whatsapp: "WhatsApp",
       airbnb: "Reservar en Airbnb",
@@ -417,7 +417,7 @@ export const content = {
     },
     contact: {
       eyebrow: "Contact",
-      title: "Message us and we'll hold your spot",
+      title: "Let us know when you're coming",
       phone: "Phone",
       whatsapp: "WhatsApp",
       airbnb: "Book on Airbnb",
