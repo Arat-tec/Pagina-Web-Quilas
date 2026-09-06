@@ -265,7 +265,7 @@ export const content = {
       eyebrow: "Huichihuayán, San Luis Potosí",
       title: "Quilas",
       subtitle:
-        "Reconnect with yourself and the natural world, deep in the heart of the Huasteca Potosina.",
+        "A moment to breathe, surrounded by nature, in the heart of the Huasteca Potosina.",
       primary: "Book",
       secondary: "See nearby attractions",
       alt: "Wooden cabins of Quilas hotel surrounded by nature at sunset",
@@ -274,19 +274,19 @@ export const content = {
       eyebrow: "Where to sleep",
       title: "Our rooms",
       intro:
-        "Comfortable spaces, surrounded by nature, made for real rest.",
+        "Comfortable spaces made for real rest.",
       slides: withImages(roomImages, [
         {
           title: "Cabin",
           badge: "1 queen bed",
           description: "Up to 2 adults and 1 child under 12.",
-          alt: "Cabin interior with one queen bed and jungle view",
+          alt: "Cabin interior with one queen bed",
         },
         {
           title: "Double Room",
           badge: "2 queen beds",
           description: "Maximum capacity for 4 guests.",
-          alt: "Double room with two queen beds and wooden ceiling",
+          alt: "Double room with two queen beds",
         },
         {
           title: "Triple Room",
