@@ -82,7 +82,7 @@ export const content = {
       eyebrow: "Huichihuayán, San Luis Potosí",
       title: "Quilas",
       subtitle:
-        "Reconecta contigo y la naturaleza, en el corazón de la Huasteca Potosina.",
+        "Un respiro para ti, rodeado de naturaleza, en el corazón de la Huasteca Potosina.",
       primary: "Reserva",
       secondary: "Ver atractivos cercanos",
       alt: "Cabañas de madera del hotel Quilas rodeadas de naturaleza al atardecer",
