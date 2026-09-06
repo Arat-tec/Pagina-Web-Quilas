@@ -82,7 +82,7 @@ export const content = {
       eyebrow: "Huichihuayán, San Luis Potosí",
       title: "Quilas",
       subtitle:
-        "Reconecta contigo y con la naturaleza, en el corazón de la Huasteca Potosina.",
+        "Reconecta contigo y la naturaleza, en el corazón de la Huasteca Potosina.",
       primary: "Reserva",
       secondary: "Ver atractivos cercanos",
       alt: "Cabañas de madera del hotel Quilas rodeadas de naturaleza al atardecer",
@@ -91,19 +91,19 @@ export const content = {
       eyebrow: "Dónde dormir",
       title: "Nuestras habitaciones",
       intro:
-        "Espacios cómodos, rodeados de naturaleza, pensados para descansar de verdad.",
+        "Espacios cómodos pensados para descansar de verdad.",
       slides: withImages(roomImages, [
         {
           title: "Cabaña",
           badge: "1 cama matrimonial",
           description: "Hasta 2 adultos y 1 menor de 12 años.",
-          alt: "Interior de la cabaña con una cama matrimonial y vista a la selva",
+          alt: "Interior de la cabaña con una cama matrimonial",
         },
         {
           title: "Habitación Doble",
           badge: "2 camas matrimoniales",
           description: "Capacidad máxima para 4 personas.",
-          alt: "Habitación doble con dos camas matrimoniales y techo de madera",
+          alt: "Habitación doble con dos camas matrimoniales",
         },
         {
           title: "Habitación Triple",
