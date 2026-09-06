@@ -218,15 +218,11 @@ export const content = {
       eyebrow: "Sobre nosotros",
       title: "Un lugar para bajar el ritmo",
       body: [
-        "En Quilas estamos rodeados de naturaleza para que nuestros huéspedes puedan conectar consigo mismos y con su entorno, salir de la rutina y encontrar paz.",
-        "Y todo esto a poca distancia de los principales atractivos de la Huasteca Potosina: a 10 minutos del río El Nacimiento y del vado de Huichihuayán, en el punto central perfecto para recorrer la región.",
+        "En Quilas nos rodea la naturaleza — y eso es, a propósito, lo que hace posible todo lo demás. Aquí puedes bajar el ritmo, reconectar contigo mismo y con tu entorno, y dejar que la rutina se quede atrás.",
+        "Queremos que la Huasteca te sorprenda: que pruebes sabores nuevos, descubras rincones que no esperabas y te lleves contigo un poco de sus tradiciones. Por eso estamos aquí en cada paso del camino, desde recomendarte a dónde ir y qué comer, hasta conseguirte un taxi o carne para tu parrillada — para que lo único de lo que tengas que preocuparte sea disfrutar.",
       ],
       alt: "Terraza de madera con hamacas rodeada de vegetación tropical",
-      highlights: [
-        "Rodeados de naturaleza",
-        "Punto central de la Huasteca",
-        "A 10 min del río",
-      ],
+
     },
     contact: {
       eyebrow: "Contacto",
@@ -405,15 +401,10 @@ export const content = {
       eyebrow: "About us",
       title: "A place to slow down",
       body: [
-        "At Quilas we are surrounded by nature so our guests can connect with themselves and with their environment, step out of the routine and find peace.",
-        "And all of it a short drive from the main attractions of the Huasteca Potosina: 10 minutes from the El Nacimiento river and the Huichihuayán ford, the perfect home base for exploring the region.",
+        "At Quilas, nature surrounds us — and that, on purpose, is what makes everything else possible. Here you can slow down, reconnect with yourself and your surroundings, and leave the routine behind.",
+        "We want the Huasteca to surprise you: to try new flavors, discover corners you didn't expect, and take home a bit of its traditions. That's why we're with you every step of the way — from recommending where to go and what to eat, to getting you a taxi or the meat for your barbecue — so the only thing you have to worry about is enjoying yourself.",
       ],
       alt: "Wooden terrace with hammocks surrounded by tropical greenery",
-      highlights: [
-        "Surrounded by nature",
-        "Central base in the Huasteca",
-        "10 min from the river",
-      ],
     },
     contact: {
       eyebrow: "Contact",
