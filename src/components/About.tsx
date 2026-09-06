@@ -1,4 +1,3 @@
-import { Leaf } from "lucide-react";
 import aboutImage from "@/assets/nosotros.jpg";
 import type { Content } from "@/lib/content";
 
@@ -18,17 +17,7 @@ export function About({ t }: { t: Content }) {
               {paragraph}
             </p>
           ))}
-          <ul className="mt-6 flex flex-wrap gap-2">
-            {t.about.highlights.map((item) => (
-              <li
-                key={item}
-                className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground"
-              >
-                <Leaf className="size-4 shrink-0 text-primary" aria-hidden />
-                {item}
-              </li>
-            ))}
-          </ul>
+          
         </div>
 
         <div className="overflow-hidden rounded-3xl bg-secondary">
