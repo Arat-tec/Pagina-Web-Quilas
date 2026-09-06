@@ -62,7 +62,7 @@ export function Contact({ t }: { t: Content }) {
                     rel="noopener noreferrer"
                     className="text-base break-words text-muted-foreground underline-offset-4 hover:underline"
                   >
-                    Enviar mensaje por Messenger
+                    Messenger
                   </a>
                 </div>
               </li>
