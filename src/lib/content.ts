@@ -102,13 +102,13 @@ export const content = {
         {
           title: "Habitación Doble",
           badge: "2 camas matrimoniales",
-          description: "Capacidad máxima para 4 personas.",
+          description: "Hasta 4 personas.",
           alt: "Habitación doble con dos camas matrimoniales",
         },
         {
           title: "Habitación Triple",
           badge: "3 camas matrimoniales",
-          description: "Capacidad máxima para 6 personas.",
+          description: "Hasta 6 personas.",
           alt: "Habitación triple amplia con tres camas matrimoniales",
         },
       ]),
@@ -132,7 +132,7 @@ export const content = {
           alt: "Vado de río poco profundo con árboles en las orillas",
         },
         {
-          title: "Sótano de las Huahuas, Aquismón",
+          title: "Sótano de las Huahuas",
           badge: "20 min",
           description:
             "Con 478 metros de profundidad, famosa por sus espectaculos de aves.",
@@ -153,7 +153,7 @@ export const content = {
           alt: "Fachada colorida de museo con escultura en la entrada",
         },
         {
-          title: 'Castillo de la Salud "Beto Ramón", Axtla',
+          title: 'Castillo de la Salud "Beto Ramón"',
           badge: "25 min",
           description:
             "Centro herbolario basado en relatos bíblicos como la Torre de Babel y el Arca de Noé.",
@@ -176,7 +176,7 @@ export const content = {
           alt: "Río turquesa entre grandes rocas",
         },
         {
-          title: "Sótano de las Golondrinas, Aquismón",
+          title: "Sótano de las Golondrinas",
           badge: "1 h",
           description:
             "Uno de los abismos naturales más profundos del mundo, hogar de miles de aves.",
