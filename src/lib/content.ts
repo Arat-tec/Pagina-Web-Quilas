@@ -315,7 +315,7 @@ export const content = {
           alt: "Shallow river ford with trees along the banks",
         },
         {
-          title: "Sótano de las Huahuas, Aquismón",
+          title: "Sótano de las Huahuas",
           badge: "20 min",
           description:
             "478 meters deep, famous for its displays of birds.",
@@ -336,7 +336,7 @@ export const content = {
           alt: "Colorful museum facade with a sculpture at the entrance",
         },
         {
-          title: '"Beto Ramón" Castillo de la Salud, Axtla',
+          title: '"Beto Ramón" Castillo de la Salud',
           badge: "25 min",
           description:
             "An herbal-medicine center based on biblical tales such as the Tower of Babel and Noah's Ark.",
@@ -359,7 +359,7 @@ export const content = {
           alt: "Turquoise river between large rocks",
         },
         {
-          title: "Sótano de las Golondrinas, Aquismón",
+          title: "Sótano de las Golondrinas",
           badge: "1 h",
           description:
             "One of the deepest natural abysses in the world, home to thousands of birds.",
