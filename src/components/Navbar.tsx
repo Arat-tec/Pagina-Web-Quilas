@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
+import { type MouseEvent, useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import type { Content, Lang } from "@/lib/content";
 import { whatsappUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import logoQuilas_negro from "@/assets/logo_quilas_negro.png";
 import logoQuilas_blanco from "@/assets/logo_quilas_blanco.png";
+
+// Color de la festividad actual — cambiar aquí en cada temporada.
+const SEASONAL_LINK_COLOR = "#F97316";
 
 type NavbarProps = {
   t: Content;
@@ -23,8 +26,8 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { href: "#inicio", label: t.nav.home },
+  const links: { href: string; label: string; seasonal?: boolean }[] = [
+    { href: "#temporada", label: t.nav.seasonal, seasonal: true },
     { href: "#habitaciones", label: t.nav.rooms },
     { href: "#atractivos", label: t.nav.attractions },
     { href: "#nosotros", label: t.nav.about },
@@ -32,6 +35,18 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
   ];
 
   const onSolid = scrolled || open;
+
+  // Scroll a la sección de forma explícita: el router de TanStack con
+  // scrollRestoration no siempre lleva a los anclas de la misma página.
+  const goToSection = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) return;
+    const el = document.getElementById(href.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    window.history.pushState(null, "", href);
+    setOpen(false);
+  };
 
   return (
     <header
@@ -43,13 +58,13 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
       )}
     >
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 md:px-6">
-        <a href="#inicio" className="flex items-center">
-  <img
-    src={onSolid ? logoQuilas_negro : logoQuilas_blanco}
-    alt="Quilas Hotel"
-    className="h-10 w-auto md:h-12"
-  />
-</a>
+        <a href="#inicio" onClick={(e) => goToSection(e, "#inicio")} className="flex items-center">
+          <img
+            src={onSolid ? logoQuilas_negro : logoQuilas_blanco}
+            alt="Quilas Hotel"
+            className="h-10 w-auto md:h-12"
+          />
+        </a>
 
         <div className="flex items-center gap-2">
           <ul className="hidden items-center gap-1 lg:flex">
@@ -57,8 +72,15 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
               <li key={link.href}>
                 <a
                   href={link.href}
+                  onClick={(e) => goToSection(e, link.href)}
+                  style={link.seasonal ? { color: SEASONAL_LINK_COLOR } : undefined}
                   className={cn(
-                    "rounded-full px-3 py-2 text-sm font-medium transition-colors",
+                    "rounded-full px-3 py-2 transition-colors",
+                    // Xantolo un paso más grande: la cursiva Garamond se ve más
+                    // chica que la sans a igual tamaño en px.
+                    link.seasonal
+                      ? "font-display text-base font-medium italic"
+                      : "text-sm font-medium",
                     onSolid
                       ? "text-foreground hover:bg-secondary"
                       : "text-forest-foreground hover:bg-warm/15",
@@ -117,8 +139,14 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="flex min-h-12 items-center rounded-lg px-2 text-base font-medium text-foreground hover:bg-secondary"
+                  onClick={(e) => goToSection(e, link.href)}
+                  style={link.seasonal ? { color: SEASONAL_LINK_COLOR } : undefined}
+                  className={cn(
+                    "flex min-h-12 items-center rounded-lg px-2 hover:bg-secondary",
+                    link.seasonal
+                      ? "font-display text-lg italic"
+                      : "text-base font-medium text-foreground",
+                  )}
                 >
                   {link.label}
                 </a>
@@ -127,7 +155,7 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
             <li className="py-3">
               <a
                 href="#contacto"
-                onClick={() => setOpen(false)}
+                onClick={(e) => goToSection(e, "#contacto")}
                 className="flex min-h-12 items-center justify-center rounded-full bg-primary px-5 font-semibold text-primary-foreground"
               >
                 {t.nav.book}

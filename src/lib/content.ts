@@ -68,7 +68,7 @@ export const content = {
   es: {
     htmlLang: "es",
     nav: {
-      home: "Inicio",
+      seasonal: "Xantolo",
       rooms: "Habitaciones",
       attractions: "Atractivos",
       about: "Nosotros",
@@ -222,7 +222,16 @@ export const content = {
         "Queremos que la Huasteca te sorprenda: que pruebes sabores nuevos, descubras rincones que no esperabas y te lleves contigo un poco de sus tradiciones. Por eso estamos aquí en cada paso del camino, desde recomendarte a dónde ir y qué comer, hasta conseguirte un taxi o carne para tu parrillada, para que lo único de lo que tengas que preocuparte sea disfrutar.",
       ],
       alt: "Terraza de madera con hamacas rodeada de vegetación tropical",
-      
+    },
+    seasonal: {
+      eyebrow: "A la vuelta de la esquina",
+      title: "Xantolo",
+      body: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      ],
+      dates: "31 Oct - 2 Nov",
+      alt: "Foto de la temporada de Xantolo",
     },
     contact: {
       eyebrow: "Contacto",
@@ -251,7 +260,7 @@ export const content = {
   en: {
     htmlLang: "en",
     nav: {
-      home: "Home",
+      seasonal: "Xantolo",
       rooms: "Rooms",
       attractions: "Attractions",
       about: "About",
@@ -405,7 +414,16 @@ export const content = {
         "We want the Huasteca to surprise you: to try new flavors, discover corners you didn't expect, and take home a bit of its traditions. That's why we're with you every step of the way from recommending where to go and what to eat, to getting you a taxi or the meat for your barbecue, so the only thing you have to worry about is enjoying yourself.",
       ],
       alt: "Wooden terrace with hammocks surrounded by tropical greenery",
-      
+    },
+    seasonal: {
+      eyebrow: "What's just around the corner",
+      title: "Xantolo",
+      body: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      ],
+      dates: "May 5 – 9",
+      alt: "Photo of the Xantolo season",
     },
     contact: {
       eyebrow: "Contact",

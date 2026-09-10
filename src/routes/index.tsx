@@ -6,6 +6,7 @@ import { Section } from "@/components/Section";
 import { Carousel } from "@/components/Carousel";
 import { Reveal } from "@/components/Reveal";
 import { About } from "@/components/About";
+import { Seasonal } from "@/components/Seasonal";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
@@ -60,24 +61,13 @@ function Index() {
         </Reveal>
 
         <Reveal>
-          <Section
-            id="atractivos"
-            eyebrow={t.near.eyebrow}
-            title={t.near.title}
-            intro={t.near.intro}
-          >
+          <Section id="atractivos" eyebrow={t.near.eyebrow} title={t.near.title}>
             <Carousel slides={t.near.slides} labels={t.carousel} splitCaptionOnMobile />
           </Section>
         </Reveal>
 
         <Reveal>
-          <Section
-            id="escapadas"
-            eyebrow={t.far.eyebrow}
-            title={t.far.title}
-            intro={t.far.intro}
-            tone="sand"
-          >
+          <Section id="escapadas" eyebrow={t.far.eyebrow} title={t.far.title} tone="sand">
             <Carousel slides={t.far.slides} labels={t.carousel} splitCaptionOnMobile />
             <div className="mt-10 flex justify-center">
               <a
@@ -94,6 +84,9 @@ function Index() {
 
         <Reveal>
           <About t={t} />
+        </Reveal>
+        <Reveal>
+          <Seasonal t={t} />
         </Reveal>
         <Reveal>
           <Contact t={t} />
