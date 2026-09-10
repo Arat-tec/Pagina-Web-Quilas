@@ -79,8 +79,8 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
                     // Xantolo un paso más grande: la cursiva Garamond se ve más
                     // chica que la sans a igual tamaño en px.
                     link.seasonal
-                      ? "font-display text-base font-medium italic"
-                      : "text-sm font-medium",
+  ? "font-display text-lg font-semibold italic"
+  : "text-sm font-medium",
                     onSolid
                       ? "text-foreground hover:bg-secondary"
                       : "text-forest-foreground hover:bg-warm/15",
