@@ -13,8 +13,10 @@ export function Footer({ t }: { t: Content }) {
 
   return (
     <footer className="bg-forest text-forest-foreground">
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-3 md:px-6">
-        <div>
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-6 gap-y-8 px-4 py-8 sm:py-12 md:grid-cols-3 md:gap-8 md:px-6">
+        {/* En móvil: logo/dirección a todo el ancho arriba, "Enlaces" y "Contacto"
+            lado a lado abajo. Desde md: las 3 columnas de siempre. */}
+        <div className="col-span-2 md:col-span-1">
           <img src={logoQuilasBlanco} alt="Quilas Hotel" className="h-10 w-auto" />
           <p className="mt-2 text-sm opacity-80">{t.footer.tagline}</p>
           <p className="mt-1 text-sm opacity-80">{site.addressLine}</p>
@@ -68,7 +70,7 @@ export function Footer({ t }: { t: Content }) {
       </div>
 
       <div className="border-t border-warm/15">
-        <p className="mx-auto max-w-6xl px-4 py-6 text-xs opacity-70 md:px-6">
+        <p className="mx-auto max-w-6xl px-4 py-4 text-xs opacity-70 sm:py-6 md:px-6">
           &copy; {new Date().getFullYear()} Quilas. {t.footer.rights}
         </p>
       </div>

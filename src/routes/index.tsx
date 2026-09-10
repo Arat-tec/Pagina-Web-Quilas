@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { About } from "@/components/About";
 import { Seasonal } from "@/components/Seasonal";
 import { Contact } from "@/components/Contact";
+import { Faq } from "@/components/Faq";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
 import { LoadingScreen } from "@/components/LoadingScreen";
@@ -90,6 +91,9 @@ function Index() {
         </Reveal>
         <Reveal>
           <Contact t={t} />
+        </Reveal>
+        <Reveal>
+          <Faq t={t} />
         </Reveal>
       </main>
 

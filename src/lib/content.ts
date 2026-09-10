@@ -247,6 +247,53 @@ export const content = {
       call: "Llamar",
       mapTitle: "Mapa de la ubicación del hotel Quilas en Huichihuayán",
     },
+    faq: {
+      eyebrow: "Antes de reservar",
+      title: "¿Tienes alguna duda?",
+      items: [
+        {
+          question: "¿Cómo se reserva?",
+          answer:
+            "Para asegurar tu estancia solo necesitas dejar un anticipo del 50% — en cuanto lo recibimos, tu lugar queda apartado sin complicaciones.",
+        },
+        {
+          question: "¿Qué métodos de pago aceptan?",
+          answer:
+            "Aceptamos efectivo, transferencia bancaria, tarjeta de débito, PayPal y depósito en efectivo — el que te quede más cómodo.",
+        },
+        {
+          question: "¿Hay señal de WiFi?",
+          answer:
+            "Sí, contamos con internet satelital de alta velocidad, así que puedes estar conectado aun estando rodeado de naturaleza.",
+        },
+        {
+          question: "¿Cuál es la hora de entrada y salida?",
+          answer:
+            "El check-in es a partir de las 3:00 p.m. y el check-out hasta las 12:00 p.m.",
+        },
+        {
+          question: "¿Puedo llegar en auto?",
+          answer:
+            "Sí, sin ningún problema — puedes llegar directo en tu propio auto.",
+        },
+        {
+          question: "¿Puedo llegar en autobús?",
+          answer:
+            "¡Claro que sí! Estamos a solo 10 minutos de la parada de autobús, y de ahí un taxi te trae al hotel en muy poco tiempo.",
+        },
+        {
+          question: "¿Qué debo llevar?",
+          answer: [
+            "Tenis cómodos",
+            "Ropa cómoda",
+            "Bloqueador solar",
+            "Repelente de insectos biodegradable",
+            "Gorra o sombrero",
+            "Lentes de sol",
+          ],
+        },
+      ],
+    },
     footer: {
       tagline: "Hotel en Huichihuayán, San Luis Potosí.",
       quickLinks: "Enlaces",
@@ -438,6 +485,53 @@ export const content = {
       openWaze: "Open in Waze",
       call: "Call",
       mapTitle: "Map showing Quilas hotel location in Huichihuayán",
+    },
+    faq: {
+      eyebrow: "Before you book",
+      title: "Any questions?",
+      items: [
+        {
+          question: "How do I book?",
+          answer:
+            "To secure your stay you only need to leave a 50% deposit — as soon as we receive it, your spot is reserved, no hassle.",
+        },
+        {
+          question: "What payment methods do you accept?",
+          answer:
+            "We accept cash, bank transfer, debit card, PayPal, and cash deposit — whichever works best for you.",
+        },
+        {
+          question: "Is there WiFi?",
+          answer:
+            "Yes, we have high-speed satellite internet, so you can stay connected even surrounded by nature.",
+        },
+        {
+          question: "What are the check-in and check-out times?",
+          answer:
+            "Check-in is from 3:00 p.m. and check-out is until 12:00 p.m.",
+        },
+        {
+          question: "Can I arrive by car?",
+          answer:
+            "Yes, no problem at all — you can drive straight here in your own car.",
+        },
+        {
+          question: "Can I arrive by bus?",
+          answer:
+            "Of course! We're just 10 minutes from the bus stop, and from there a taxi will get you to the hotel in no time.",
+        },
+        {
+          question: "What should I bring?",
+          answer: [
+            "Comfortable sneakers",
+            "Comfortable clothing",
+            "Sunscreen",
+            "Biodegradable insect repellent",
+            "Cap or hat",
+            "Sunglasses",
+          ],
+        },
+      ],
     },
     footer: {
       tagline: "Hotel in Huichihuayán, San Luis Potosí.",
