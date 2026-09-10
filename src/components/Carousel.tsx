@@ -8,19 +8,19 @@ type CarouselProps = {
   labels: { prev: string; next: string; goTo: string };
   priority?: boolean;
   /**
-   * En móvil, saca la descripción de la foto y la muestra en un bloque de texto
-   * debajo de la imagen (badge y título siguen sobre la foto). En tablet/desktop
-   * no cambia nada. Úsalo en carruseles con descripciones largas (atractivos),
-   * no en los de habitaciones.
+   * Saca la descripción de la foto y la muestra en un bloque de texto debajo de
+   * la imagen (badge y título siguen sobre la foto), en todos los tamaños de
+   * pantalla. Úsalo en carruseles con descripciones largas (atractivos), no en
+   * los de habitaciones.
    */
-  splitCaptionOnMobile?: boolean;
+  splitCaption?: boolean;
 };
 
 export function Carousel({
   slides,
   labels,
   priority = false,
-  splitCaptionOnMobile = false,
+  splitCaption = false,
 }: CarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
@@ -85,7 +85,7 @@ export function Carousel({
         }}
       >
         {slides.map((slide, i) => (
-          <li key={slide.title} className="w-[92%] shrink-0 snap-start sm:w-[70%] lg:w-[42%]">
+          <li key={slide.title} className="w-[92%] shrink-0 snap-start sm:w-[70%] lg:w-[46%]">
             <figure className="group">
               <div
                 className={cn(
@@ -119,7 +119,7 @@ export function Carousel({
                     <p
                       className={cn(
                         "mt-1 max-w-prose text-sm opacity-90 sm:text-base",
-                        splitCaptionOnMobile && "hidden sm:block",
+                        splitCaption && "hidden",
                       )}
                     >
                       {slide.description}
@@ -127,10 +127,10 @@ export function Carousel({
                   ) : null}
                 </figcaption>
               </div>
-              {splitCaptionOnMobile && slide.description ? (
+              {splitCaption && slide.description ? (
                 // Padding en % del ancho de la FOTO (≈ ancho del <figure>): el texto
                 // queda visiblemente más angosto que la imagen, con aire a ambos lados.
-                <p className="mt-4 px-[6%] text-sm leading-relaxed text-muted-foreground sm:hidden">
+                <p className="mt-4 px-[6%] text-sm leading-relaxed text-muted-foreground sm:text-base">
                   {slide.description}
                 </p>
               ) : null}

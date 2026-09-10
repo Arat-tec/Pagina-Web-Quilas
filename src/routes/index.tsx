@@ -62,13 +62,13 @@ function Index() {
 
         <Reveal>
           <Section id="atractivos" eyebrow={t.near.eyebrow} title={t.near.title}>
-            <Carousel slides={t.near.slides} labels={t.carousel} splitCaptionOnMobile />
+            <Carousel slides={t.near.slides} labels={t.carousel} splitCaption />
           </Section>
         </Reveal>
 
         <Reveal>
           <Section id="escapadas" eyebrow={t.far.eyebrow} title={t.far.title} tone="sand">
-            <Carousel slides={t.far.slides} labels={t.carousel} splitCaptionOnMobile />
+            <Carousel slides={t.far.slides} labels={t.carousel} splitCaption />
             <div className="mt-10 flex justify-center">
               <a
                 href={whatsappUrl(t.waMessage)}
