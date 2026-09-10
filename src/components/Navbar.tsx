@@ -144,8 +144,8 @@ export function Navbar({ t, lang, onToggleLang }: NavbarProps) {
                   className={cn(
                     "flex min-h-12 items-center rounded-lg px-2 hover:bg-secondary",
                     link.seasonal
-                      ? "font-display text-lg italic"
-                      : "text-base font-medium text-foreground",
+  ? "font-display text-lg font-semibold italic"
+  : "text-base font-medium text-foreground",
                   )}
                 >
                   {link.label}
