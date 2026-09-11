@@ -254,12 +254,12 @@ export const content = {
         {
           question: "¿Cómo se reserva?",
           answer:
-            "Para asegurar tu estancia solo necesitas dejar un anticipo del 50% — en cuanto lo recibimos, tu lugar queda apartado sin complicaciones.",
+            "Para asegurar tu estancia solo necesitas dejar un anticipo del 50%, en cuanto lo recibimos, tu lugar queda apartado sin complicaciones.",
         },
         {
           question: "¿Qué métodos de pago aceptan?",
           answer:
-            "Aceptamos efectivo, transferencia bancaria, tarjeta de débito, PayPal y depósito en efectivo — el que te quede más cómodo.",
+            "Aceptamos efectivo, transferencia bancaria, tarjeta de débito, PayPal y depósito en efectivo, el que te quede más cómodo.",
         },
         {
           question: "¿Hay señal de WiFi?",
@@ -269,7 +269,7 @@ export const content = {
         {
           question: "¿Cuál es la hora de entrada y salida?",
           answer:
-            "El check-in es a partir de las 3:00 p.m. y el check-out hasta las 12:00 p.m.",
+            "El check-in es a partir de las 3:00 p.m. y el check-out hasta las 12:00 del medio día.",
         },
         {
           question: "¿Puedo llegar en auto?",
@@ -287,7 +287,7 @@ export const content = {
             "Tenis cómodos",
             "Ropa cómoda",
             "Bloqueador solar",
-            "Repelente de insectos biodegradable",
+            "Repelente de insectos",
             "Gorra o sombrero",
             "Lentes de sol",
           ],
@@ -493,12 +493,12 @@ export const content = {
         {
           question: "How do I book?",
           answer:
-            "To secure your stay you only need to leave a 50% deposit — as soon as we receive it, your spot is reserved, no hassle.",
+            "To secure your stay you only need to leave a 50% deposit as soon as we receive it, your spot is reserved, no hassle.",
         },
         {
           question: "What payment methods do you accept?",
           answer:
-            "We accept cash, bank transfer, debit card, PayPal, and cash deposit — whichever works best for you.",
+            "We accept cash, bank transfer, debit card, PayPal, and cash deposit whichever works best for you.",
         },
         {
           question: "Is there WiFi?",
