@@ -1,6 +1,9 @@
-import roomCabana from "@/assets/room-cabana.jpg";
-import roomDoble from "@/assets/room-doble.jpg";
-import roomTriple from "@/assets/room-triple.jpg";
+import roomCabanaVertical from "@/assets/room-cabana-vertical.jpg";
+import roomCabanaHorizontal from "@/assets/room-cabana-horizontal.jpg";
+import roomDobleVertical from "@/assets/room-doble-vertical.jpg";
+import roomDobleHorizontal from "@/assets/room-doble-horizontal.jpg";
+import roomTripleVertical from "@/assets/room-triple-vertical.jpg";
+import roomTripleHorizontal from "@/assets/room-triple-horizontal.jpg";
 import atrNacimiento from "@/assets/atr-nacimiento.jpg";
 import atrVado from "@/assets/atr-vado.jpg";
 import atrHuahuas from "@/assets/atr-huahuas.jpg";
@@ -17,16 +20,21 @@ import atrTamul from "@/assets/atr-tamul.jpg";
 export type Lang = "es" | "en";
 
 export type Slide = {
-  image: string;
+  image: string | { mobile: string; desktop: string };
   title: string;
   badge?: string;
+  blurb?: string;
   description: string;
   alt: string;
   /** Valor CSS de object-position para acomodar la foto dentro del marco (p. ej. "center bottom"). */
   objectPosition?: string | undefined;
 };
 
-const roomImages = [roomCabana, roomDoble, roomTriple];
+const roomImages = [
+  { mobile: roomCabanaVertical, desktop: roomCabanaHorizontal },
+  { mobile: roomDobleVertical, desktop: roomDobleHorizontal },
+  { mobile: roomTripleVertical, desktop: roomTripleHorizontal },
+];
 
 const nearImages = [
   atrNacimiento,
@@ -50,10 +58,16 @@ const farImages = [
 // Tambaque: la foto es vertical y el agua está abajo; se ancla a la parte baja.
 const farPositions = ["center bottom"];
 
-type Entry = { title: string; badge?: string; description: string; alt: string };
+type Entry = {
+  title: string;
+  badge?: string;
+  blurb?: string;
+  description: string;
+  alt: string;
+};
 
 const withImages = (
-  images: string[],
+  images: Slide["image"][],
   entries: Entry[],
   positions: string[] = [],
 ): Slide[] =>
@@ -95,20 +109,20 @@ export const content = {
       slides: withImages(roomImages, [
         {
           title: "Cabaña",
-          badge: "1 cama matrimonial",
-          description: "Hasta 2 adultos y 1 menor de 12 años.",
+          blurb: "Perfecta para parejas o una familia pequeña",
+          description: "Hasta 2 adultos y un menor de 12 años",
           alt: "Interior de la cabaña con una cama matrimonial",
         },
         {
           title: "Habitación Doble",
-          badge: "2 camas matrimoniales",
-          description: "Hasta 4 personas.",
+          blurb: "Más amplia, ideal para toda la familia",
+          description: "Hasta 4 personas",
           alt: "Habitación doble con dos camas matrimoniales",
         },
         {
           title: "Habitación Triple",
-          badge: "3 camas matrimoniales",
-          description: "Hasta 6 personas.",
+          blurb: "Perfecta para ir en grupo, sin que falte espacio",
+          description: "Hasta 6 personas",
           alt: "Habitación triple amplia con tres camas matrimoniales",
         },
       ]),
@@ -334,20 +348,20 @@ export const content = {
       slides: withImages(roomImages, [
         {
           title: "Cabin",
-          badge: "1 queen bed",
-          description: "Up to 2 adults and 1 child under 12.",
+          blurb: "Perfect for couples or a small family",
+          description: "Up to 2 adults and one child under 12",
           alt: "Cabin interior with one queen bed",
         },
         {
           title: "Double Room",
-          badge: "2 queen beds",
-          description: "Maximum capacity for 4 guests.",
+          blurb: "More spacious, ideal for the whole family",
+          description: "Up to 4 people",
           alt: "Double room with two queen beds",
         },
         {
           title: "Triple Room",
-          badge: "3 queen beds",
-          description: "Maximum capacity for 6 guests.",
+          blurb: "Perfect for groups, with room to spare",
+          description: "Up to 6 people",
           alt: "Spacious triple room with three queen beds",
         },
       ]),

@@ -8,12 +8,16 @@ type CarouselProps = {
   labels: { prev: string; next: string; goTo: string };
   priority?: boolean;
   /**
-   * Saca la descripción de la foto y la muestra en un bloque de texto debajo de
-   * la imagen (badge y título siguen sobre la foto), en todos los tamaños de
-   * pantalla. Úsalo en carruseles con descripciones largas (atractivos), no en
-   * los de habitaciones.
+   * Saca el blurb y la descripción de la foto y los muestra en un bloque de
+   * texto debajo de la imagen (badge y título siguen sobre la foto), en todos
+   * los tamaños de pantalla. Úsalo en carruseles donde el texto bajo la foto
+   * debe leerse aparte de la imagen — atractivos y habitaciones.
    */
   splitCaption?: boolean;
+  /** Clase de aspect-ratio del contenedor de la foto en móvil (se conserva `sm:aspect-16/10` desde `sm:`). Por defecto `"aspect-4/3"`, igual que siempre. */
+  mobileAspect?: string;
+  /** Centra el título (y el badge) horizontalmente solo en móvil; desde `sm:` vuelve a la izquierda de siempre. */
+  centerCaptionOnMobile?: boolean;
 };
 
 export function Carousel({
@@ -21,6 +25,8 @@ export function Carousel({
   labels,
   priority = false,
   splitCaption = false,
+  mobileAspect = "aspect-4/3",
+  centerCaptionOnMobile = false,
 }: CarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
@@ -94,21 +100,48 @@ export function Carousel({
                   i !== active && "motion-safe:scale-[0.98]",
                 )}
               >
-                <div className="aspect-4/3 w-full overflow-hidden sm:aspect-16/10">
-                  <img
-                    src={slide.image}
-                    alt={slide.alt}
-                    width={1400}
-                    height={933}
-                    loading={priority && i === 0 ? "eager" : "lazy"}
-                    decoding="async"
-                    style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
-                    className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+                <div className={cn(mobileAspect, "w-full overflow-hidden sm:aspect-16/10")}>
+                  {typeof slide.image === "string" ? (
+                    <img
+                      src={slide.image}
+                      alt={slide.alt}
+                      width={1400}
+                      height={933}
+                      loading={priority && i === 0 ? "eager" : "lazy"}
+                      decoding="async"
+                      style={
+                        slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined
+                      }
+                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  ) : (
+                    <picture>
+                      <source media="(min-width: 640px)" srcSet={slide.image.desktop} />
+                      <img
+                        src={slide.image.mobile}
+                        alt={slide.alt}
+                        width={1400}
+                        height={933}
+                        loading={priority && i === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        style={
+                          slide.objectPosition
+                            ? { objectPosition: slide.objectPosition }
+                            : undefined
+                        }
+                        className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </picture>
+                  )}
                 </div>
                 {/* Scrim para asegurar legibilidad del texto sobre cualquier foto */}
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t from-black/80 via-black/40 to-transparent" />
-                <figcaption className="absolute inset-x-0 bottom-0 p-4 text-forest-foreground sm:p-6">
+                <figcaption
+                  className={cn(
+                    "absolute inset-x-0 bottom-0 p-4 text-forest-foreground sm:p-6",
+                    centerCaptionOnMobile && "text-center sm:text-left",
+                  )}
+                >
                   {slide.badge ? (
                     <span className="mb-2 inline-block rounded-full bg-terracotta px-3 py-1 text-xs font-semibold tracking-wide text-terracotta-foreground uppercase">
                       {slide.badge}
@@ -127,12 +160,30 @@ export function Carousel({
                   ) : null}
                 </figcaption>
               </div>
-              {splitCaption && slide.description ? (
+              {splitCaption && (slide.blurb || slide.description) ? (
                 // Padding en % del ancho de la FOTO (≈ ancho del <figure>): el texto
                 // queda visiblemente más angosto que la imagen, con aire a ambos lados.
-                <p className="mt-4 px-[6%] text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {slide.description}
-                </p>
+                <div className="mt-4 px-[6%]">
+                  {slide.blurb ? (
+                    <p className="text-lg font-semibold text-foreground sm:text-xl">
+                      {slide.blurb}
+                    </p>
+                  ) : null}
+                  {slide.description ? (
+                    <p
+                      className={
+                        slide.blurb
+                          ? // Con blurb (habitaciones) la description es la jerarquía baja:
+                            // más chica y subrayada.
+                            "mt-1 text-xs text-muted-foreground underline underline-offset-4 sm:text-sm"
+                          : // Sin blurb (atractivos) se queda exactamente como siempre.
+                            "text-sm leading-relaxed text-muted-foreground sm:text-base"
+                      }
+                    >
+                      {slide.description}
+                    </p>
+                  ) : null}
+                </div>
               ) : null}
             </figure>
           </li>

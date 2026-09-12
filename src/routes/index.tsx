@@ -57,7 +57,13 @@ function Index() {
             intro={t.rooms.intro}
             tone="sand"
           >
-            <Carousel slides={t.rooms.slides} labels={t.carousel} />
+            <Carousel
+              slides={t.rooms.slides}
+              labels={t.carousel}
+              splitCaption
+              mobileAspect="aspect-[3/4]"
+              centerCaptionOnMobile
+            />
           </Section>
         </Reveal>
 
