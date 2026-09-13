@@ -171,6 +171,30 @@
   transform: none;
 }
 
+/*
+ * Barra de progreso del dot activo en los carruseles con autoplay (Carousel.tsx):
+ * se rellena de izquierda a derecha a lo largo de los 6s entre cada avance.
+ * `key={active}` en el componente reinicia la animación al cambiar de slide;
+ * `data-paused` congela el relleno donde esté sin resetearlo ni seguir llenando.
+ */
+@keyframes carousel-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.carousel-progress {
+  transform-origin: left;
+  animation: carousel-progress 6s linear forwards;
+}
+
+.carousel-progress[data-paused="true"] {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -181,6 +205,11 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .carousel-progress {
+    animation: none;
+    transform: scaleX(1);
   }
 }
 

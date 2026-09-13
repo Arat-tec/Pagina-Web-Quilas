@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import type { Slide } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
+/** Cada cuánto avanza el autoplay, en ms. También es la duración de la animación
+ * de la barra de progreso del dot activo (ver `.carousel-progress` en styles.css). */
+const AUTOPLAY_MS = 6000;
+
 type CarouselProps = {
   slides: Slide[];
-  labels: { prev: string; next: string; goTo: string };
+  labels: { prev: string; next: string; goTo: string; pause: string; play: string };
   priority?: boolean;
   /**
    * Saca el blurb y la descripción de la foto y los muestra en un bloque de
@@ -30,6 +34,9 @@ export function Carousel({
 }: CarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
   const [active, setActive] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const programmaticScrollRef = useRef(false);
+  const programmaticScrollTimeout = useRef<number | undefined>(undefined);
 
   const scrollTo = useCallback((index: number) => {
     const track = trackRef.current;
@@ -37,10 +44,30 @@ export function Carousel({
     const item = track.children[index] as HTMLElement | undefined;
     if (!item) return;
     const padLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+
+    // Navegación intencional: el dot se actualiza YA, no cuando el
+    // scroll "confirme" pasivamente dónde terminó.
+    programmaticScrollRef.current = true;
+    setActive(index);
+
     track.scrollTo({
-      left: item.offsetLeft - track.offsetLeft - padLeft,
+      // "track" es position:relative y por lo tanto el offsetParent directo
+      // de cada <li>: item.offsetLeft YA viene medido relativo al propio
+      // track (su espacio de scroll), así que NO se resta track.offsetLeft
+      // — ese valor es el "left" resuelto de la clase "left-1/2" (mitad del
+      // ancho del contenedor), un artefacto de layout de la técnica
+      // full-bleed sin relación con la posición de scroll.
+      left: item.offsetLeft - padLeft,
       behavior: "smooth",
     });
+
+    // Red de seguridad si el navegador no dispara "scrollend" (Safari
+    // viejo): suelta el flag tras un tiempo prudente para no dejar el
+    // listener de scroll bloqueado para siempre.
+    window.clearTimeout(programmaticScrollTimeout.current);
+    programmaticScrollTimeout.current = window.setTimeout(() => {
+      programmaticScrollRef.current = false;
+    }, 700);
   }, []);
 
   useEffect(() => {
@@ -49,6 +76,7 @@ export function Carousel({
 
     let frame = 0;
     const onScroll = () => {
+      if (programmaticScrollRef.current) return;
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(() => {
         const items = Array.from(track.children) as HTMLElement[];
@@ -57,7 +85,9 @@ export function Carousel({
         let best = 0;
         let bestDistance = Number.POSITIVE_INFINITY;
         items.forEach((item, i) => {
-          const itemStart = item.offsetLeft - track.offsetLeft;
+          // Mismo razonamiento que en scrollTo: item.offsetLeft ya es
+          // relativo al propio track, no se resta track.offsetLeft.
+          const itemStart = item.offsetLeft;
           const distance = Math.abs(itemStart - center);
           if (distance < bestDistance) {
             bestDistance = distance;
@@ -72,12 +102,71 @@ export function Carousel({
     return () => {
       cancelAnimationFrame(frame);
       track.removeEventListener("scroll", onScroll);
+      window.clearTimeout(programmaticScrollTimeout.current);
     };
   }, []);
 
+  // En cuanto el navegador confirma que el scroll terminó de verdad, suelta el
+  // flag — no hace falta esperar a la red de seguridad de 700ms.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const onScrollEnd = () => {
+      programmaticScrollRef.current = false;
+    };
+    track.addEventListener("scrollend", onScrollEnd);
+    return () => track.removeEventListener("scrollend", onScrollEnd);
+  }, []);
+
+  // Con prefers-reduced-motion el autoplay nunca arranca solo: empieza en pausa,
+  // igual que el resto de animaciones del sitio (ver Reveal.tsx).
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPlaying(false);
+    }
+  }, []);
+
+  // Avanza al siguiente slide cada AUTOPLAY_MS mientras "playing" sea true, en
+  // loop infinito. El efecto se reprograma solo cada vez que "active" cambia
+  // (por autoplay, por clic manual o por swipe), así que el conteo de 6s —y la
+  // barra de progreso del dot activo, que dura lo mismo— siempre arranca de cero
+  // en el slide correcto.
+  useEffect(() => {
+    if (!playing) return;
+    const next = active >= slides.length - 1 ? 0 : active + 1;
+    const timer = setTimeout(() => scrollTo(next), AUTOPLAY_MS);
+    return () => clearTimeout(timer);
+  }, [active, playing, slides.length, scrollTo]);
+
+  // Swipe/arrastre manual en el track (no el scroll programático que dispara
+  // scrollTo) pausa el autoplay, igual que un clic en un dot o una flecha.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const takeOver = () => {
+      setPlaying(false);
+      // El dedo del usuario manda: si había un scroll automático en
+      // curso (autoplay o clic en flecha/dot), se cancela para que el
+      // listener de scroll vuelva a calcular "active" en vivo.
+      programmaticScrollRef.current = false;
+      window.clearTimeout(programmaticScrollTimeout.current);
+    };
+    track.addEventListener("pointerdown", takeOver, { passive: true });
+    track.addEventListener("wheel", takeOver, { passive: true });
+    return () => {
+      track.removeEventListener("pointerdown", takeOver);
+      track.removeEventListener("wheel", takeOver);
+    };
+  }, []);
+
+  const goTo = (index: number) => {
+    setPlaying(false);
+    scrollTo(index);
+  };
+
   const go = (delta: number) => {
     const next = Math.min(Math.max(active + delta, 0), slides.length - 1);
-    scrollTo(next);
+    goTo(next);
   };
 
   return (
@@ -191,27 +280,55 @@ export function Carousel({
       </ul>
 
       <div className="mt-4 flex items-center justify-center gap-4 sm:justify-between">
-        {/* Fila de dots: nunca envuelve (flex-nowrap + botones shrink-0 de 32px);
-            6 dots = 232px, cabe de sobra en cualquier móvil. overflow-x-clip es
-            solo una red de seguridad. */}
-        <div className="flex flex-nowrap justify-center gap-2 overflow-x-clip sm:justify-start">
-          {slides.map((slide, i) => (
-            <button
-              key={slide.title}
-              type="button"
-              onClick={() => scrollTo(i)}
-              aria-label={`${labels.goTo} ${i + 1}`}
-              aria-current={i === active}
-              className="grid size-8 shrink-0 place-items-center rounded-full"
-            >
-              <span
-                className={cn(
-                  "block h-2 rounded-full transition-[width,background-color]",
-                  i === active ? "w-6 bg-primary" : "w-2 bg-border",
-                )}
-              />
-            </button>
-          ))}
+        <div className="flex items-center gap-3">
+          {/* Fila de dots: nunca envuelve (flex-nowrap + botones shrink-0 de 32px);
+              6 dots = 232px, cabe de sobra en cualquier móvil. overflow-x-clip es
+              solo una red de seguridad. El dot activo es un pill con una barra de
+              progreso interna (.carousel-progress) que se rellena en AUTOPLAY_MS;
+              los inactivos se quedan como círculo chico sin relleno. */}
+          <div className="flex flex-nowrap justify-center gap-2 overflow-x-clip sm:justify-start">
+            {slides.map((slide, i) => (
+              <button
+                key={slide.title}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`${labels.goTo} ${i + 1}`}
+                aria-current={i === active}
+                className="grid size-8 shrink-0 place-items-center rounded-full"
+              >
+                <span
+                  className={cn(
+                    "relative block h-2 overflow-hidden rounded-full bg-border transition-[width]",
+                    i === active ? "w-6" : "w-2",
+                  )}
+                >
+                  {i === active ? (
+                    <span
+                      key={active}
+                      data-paused={!playing}
+                      className="carousel-progress absolute inset-0 block rounded-full bg-primary"
+                    />
+                  ) : null}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Control esencial (no decorativo): visible en todos los tamaños, a
+              diferencia de las flechas prev/next que solo aparecen desde sm:. */}
+          <button
+            type="button"
+            onClick={() => setPlaying((p) => !p)}
+            aria-label={playing ? labels.pause : labels.play}
+            aria-pressed={playing}
+            className="grid size-9 shrink-0 place-items-center rounded-full border border-border bg-card text-foreground transition-colors hover:bg-secondary"
+          >
+            {playing ? (
+              <Pause className="size-4" aria-hidden />
+            ) : (
+              <Play className="size-4" aria-hidden />
+            )}
+          </button>
         </div>
 
         <div className="hidden gap-2 sm:flex">

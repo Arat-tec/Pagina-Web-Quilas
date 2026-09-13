@@ -316,7 +316,13 @@ export const content = {
     waMessage:
       "¡Hola! Me interesa reservar en Quilas. ¿Me pueden mandar información?",
     waFab: "Escribir por WhatsApp",
-    carousel: { prev: "Anterior", next: "Siguiente", goTo: "Ir a la foto" },
+    carousel: {
+      prev: "Anterior",
+      next: "Siguiente",
+      goTo: "Ir a la foto",
+      pause: "Pausar",
+      play: "Reproducir",
+    },
   },
   en: {
     htmlLang: "en",
@@ -555,7 +561,13 @@ export const content = {
     waMessage:
       "Hi! I'd like to book a stay at Quilas. Could you share availability and rates?",
     waFab: "Chat on WhatsApp",
-    carousel: { prev: "Previous", next: "Next", goTo: "Go to photo" },
+    carousel: {
+      prev: "Previous",
+      next: "Next",
+      goTo: "Go to photo",
+      pause: "Pause",
+      play: "Play",
+    },
   },
 } as const;
 
