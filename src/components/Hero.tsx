@@ -17,7 +17,7 @@ export function Hero({ t }: { t: Content }) {
           className="absolute inset-0 -z-10 size-full object-cover"
         />
       </picture>
-      <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
+      <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/20 sm:from-black/60 sm:via-black/25 sm:to-black/10" />
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-28 pb-10 md:px-6 sm:pb-16">
         <p className="text-[10px] font-semibold tracking-[0.15em] text-forest-foreground/85 uppercase sm:text-xs sm:tracking-[0.25em]">
