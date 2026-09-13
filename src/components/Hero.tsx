@@ -1,18 +1,22 @@
-import heroImage from "@/assets/hero.jpg";
+import heroPortadaVertical from "@/assets/portada-vertical.jpg";
+import heroPortadaHorizontal from "@/assets/portada-horizontal.jpg";
 import type { Content } from "@/lib/content";
 
 export function Hero({ t }: { t: Content }) {
   return (
     <section id="inicio" className="relative isolate flex min-h-[92svh] items-end">
-      <img
-        src={heroImage}
-        alt={t.hero.alt}
-        width={1920}
-        height={1280}
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 -z-10 size-full object-cover"
-      />
+      <picture>
+        <source media="(min-width: 640px)" srcSet={heroPortadaHorizontal} />
+        <img
+          src={heroPortadaVertical}
+          alt={t.hero.alt}
+          width={1920}
+          height={1280}
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 -z-10 size-full object-cover"
+        />
+      </picture>
       <div className="absolute inset-0 -z-10 bg-linear-to-t from-black/85 via-black/45 to-black/20" />
 
       <div className="mx-auto w-full max-w-6xl px-4 pt-28 pb-10 md:px-6 sm:pb-16">
@@ -22,14 +26,14 @@ export function Hero({ t }: { t: Content }) {
         <h1 className="font-display mt-3 text-5xl leading-none font-semibold text-forest-foreground sm:text-7xl lg:text-8xl">
           {t.hero.title}
         </h1>
-        <p className="mt-4 max-w-xl text-lg text-forest-foreground/90 sm:text-xl">
+        <p className="mt-4 max-w-xl text-base text-forest-foreground/90 sm:text-xl">
           {t.hero.subtitle}
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
             href="#contacto"
-            className="inline-flex min-h-11 self-start items-center justify-center rounded-full bg-primary px-6 text-base font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            className="inline-flex min-h-11 self-start items-center justify-center rounded-full bg-primary px-5 text-sm font-normal text-primary-foreground transition-opacity hover:opacity-90 sm:px-6 sm:text-base sm:font-semibold"
           >
             {t.hero.primary}
           </a>

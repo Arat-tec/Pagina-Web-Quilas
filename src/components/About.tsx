@@ -1,4 +1,5 @@
-import aboutImage from "@/assets/nosotros.jpg";
+import aboutVertical from "@/assets/nosotros-vertical.jpg";
+import aboutHorizontal from "@/assets/nosotros-horizontal.jpg";
 import type { Content } from "@/lib/content";
 
 export function About({ t }: { t: Content }) {
@@ -21,16 +22,19 @@ export function About({ t }: { t: Content }) {
         </div>
 
         <div className="mt-10 overflow-hidden rounded-3xl bg-secondary sm:mt-14">
-          <div className="aspect-16/9 w-full">
-            <img
-              src={aboutImage}
-              alt={t.about.alt}
-              width={1920}
-              height={1080}
-              loading="lazy"
-              decoding="async"
-              className="size-full object-cover"
-            />
+          <div className="aspect-[3/4] w-full sm:aspect-16/9">
+            <picture>
+              <source media="(min-width: 640px)" srcSet={aboutHorizontal} />
+              <img
+                src={aboutVertical}
+                alt={t.about.alt}
+                width={1920}
+                height={1080}
+                loading="lazy"
+                decoding="async"
+                className="size-full object-cover"
+              />
+            </picture>
           </div>
         </div>
       </div>
