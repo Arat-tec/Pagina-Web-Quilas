@@ -241,8 +241,8 @@ export const content = {
       eyebrow: "A la vuelta de la esquina",
       title: "Xantolo",
       body: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Xantolo viene del náhuatl y tiene raíces prehispánicas: se cree que en estas fechas las almas de los difuntos regresan al mundo de los vivos para convivir de nuevo con sus seres queridos. Veladoras, copal y flor de cempasúchil llenan el aire para recibirlas.",
+        "Las comparsas bailan con máscaras artesanales, y los altares se llenan de ofrendas para los que se fueron. Quilas es un buen lugar para vivir esta tradición, rodeado de naturaleza, pero a minutos de donde sigue tan viva como siempre.",
       ],
       dates: "31 Oct - 2 Nov",
       alt: "Foto de la temporada de Xantolo",
@@ -486,8 +486,8 @@ export const content = {
       eyebrow: "What's just around the corner",
       title: "Xantolo",
       body: [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "Xantolo comes from Nahuatl and has pre-Hispanic roots: it's believed that during these days the souls of the departed return to the world of the living to be with their loved ones once again. Candles, copal incense, and marigold flowers fill the air to welcome them.",
+        "Comparsas dance in handcrafted masks, and altars fill with offerings for those who have passed. Quilas is a good place to experience this tradition, surrounded by nature, just minutes from where it's still as alive as ever.",
       ],
       dates: "Oct 31 - Nov 2",
       alt: "Photo of the Xantolo season",
