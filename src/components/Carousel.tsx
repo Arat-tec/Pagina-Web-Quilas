@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 /** Cada cuánto avanza el autoplay, en ms. También es la duración de la animación
  * de la barra de progreso del dot activo (ver `.carousel-progress` en styles.css). */
 const AUTOPLAY_MS = 6000;
+/** Duración fija de la animación de scroll entre slides (scrollTo y autoplay). */
+const SCROLL_DURATION_MS = 750;
 
 type CarouselProps = {
   slides: Slide[];
@@ -33,10 +35,13 @@ export function Carousel({
   centerCaptionOnMobile = false,
 }: CarouselProps) {
   const trackRef = useRef<HTMLUListElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [playing, setPlaying] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const programmaticScrollRef = useRef(false);
   const programmaticScrollTimeout = useRef<number | undefined>(undefined);
+  const scrollAnimationFrame = useRef<number | undefined>(undefined);
 
   const scrollTo = useCallback((index: number) => {
     const track = trackRef.current;
@@ -44,30 +49,54 @@ export function Carousel({
     const item = track.children[index] as HTMLElement | undefined;
     if (!item) return;
     const padLeft = parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    // "track" es position:relative y por lo tanto el offsetParent directo de
+    // cada <li>: item.offsetLeft YA viene medido relativo al propio track (su
+    // espacio de scroll), así que NO se resta track.offsetLeft — ese valor es
+    // el "left" resuelto de la clase "left-1/2" (mitad del ancho del
+    // contenedor), un artefacto de layout de la técnica full-bleed sin
+    // relación con la posición de scroll.
+    const target = item.offsetLeft - padLeft;
 
     // Navegación intencional: el dot se actualiza YA, no cuando el
     // scroll "confirme" pasivamente dónde terminó.
     programmaticScrollRef.current = true;
     setActive(index);
 
-    track.scrollTo({
-      // "track" es position:relative y por lo tanto el offsetParent directo
-      // de cada <li>: item.offsetLeft YA viene medido relativo al propio
-      // track (su espacio de scroll), así que NO se resta track.offsetLeft
-      // — ese valor es el "left" resuelto de la clase "left-1/2" (mitad del
-      // ancho del contenedor), un artefacto de layout de la técnica
-      // full-bleed sin relación con la posición de scroll.
-      left: item.offsetLeft - padLeft,
-      behavior: "smooth",
-    });
+    cancelAnimationFrame(scrollAnimationFrame.current ?? 0);
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Sin animación: salta directo a la posición final, igual que el
+      // resto del sitio con reduced-motion.
+      track.scrollLeft = target;
+    } else {
+      // El scroll "smooth" nativo no tiene duración configurable (cada
+      // navegador decide su propia velocidad) — se anima "scrollLeft" a
+      // mano, frame a frame, con una duración fija y easing propios.
+      const start = track.scrollLeft;
+      const distance = target - start;
+      const startTime = performance.now();
+      // ease-in-out-quad: acelera al inicio, desacelera al final.
+      const easeInOutQuad = (t: number) => (t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2);
+
+      const step = (now: number) => {
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / SCROLL_DURATION_MS, 1);
+        track.scrollLeft = start + distance * easeInOutQuad(t);
+        if (t < 1) {
+          scrollAnimationFrame.current = requestAnimationFrame(step);
+        }
+      };
+      scrollAnimationFrame.current = requestAnimationFrame(step);
+    }
 
     // Red de seguridad si el navegador no dispara "scrollend" (Safari
     // viejo): suelta el flag tras un tiempo prudente para no dejar el
-    // listener de scroll bloqueado para siempre.
+    // listener de scroll bloqueado para siempre. Un poco más que
+    // SCROLL_DURATION_MS para darle margen a la animación de terminar.
     window.clearTimeout(programmaticScrollTimeout.current);
     programmaticScrollTimeout.current = window.setTimeout(() => {
       programmaticScrollRef.current = false;
-    }, 700);
+    }, SCROLL_DURATION_MS + 100);
   }, []);
 
   useEffect(() => {
@@ -101,13 +130,14 @@ export function Carousel({
     track.addEventListener("scroll", onScroll, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
+      cancelAnimationFrame(scrollAnimationFrame.current ?? 0);
       track.removeEventListener("scroll", onScroll);
       window.clearTimeout(programmaticScrollTimeout.current);
     };
   }, []);
 
   // En cuanto el navegador confirma que el scroll terminó de verdad, suelta el
-  // flag — no hace falta esperar a la red de seguridad de 700ms.
+  // flag — no hace falta esperar a la red de seguridad de SCROLL_DURATION_MS.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
@@ -126,17 +156,36 @@ export function Carousel({
     }
   }, []);
 
-  // Avanza al siguiente slide cada AUTOPLAY_MS mientras "playing" sea true, en
-  // loop infinito. El efecto se reprograma solo cada vez que "active" cambia
-  // (por autoplay, por clic manual o por swipe), así que el conteo de 6s —y la
-  // barra de progreso del dot activo, que dura lo mismo— siempre arranca de cero
-  // en el slide correcto.
+  // El autoplay solo debe contar mientras el carrusel está de verdad visible
+  // en pantalla — si no, los 3 carruseles de la página arrancarían su cuenta
+  // regresiva apenas carga, y ya habrían avanzado antes de que el usuario
+  // llegue a verlos.
   useEffect(() => {
-    if (!playing) return;
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry) setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
+
+  // Avanza al siguiente slide cada AUTOPLAY_MS mientras "playing" sea true y
+  // el carrusel esté visible, en loop infinito. El efecto se reprograma solo
+  // cada vez que "active" cambia (por autoplay, por clic manual o por swipe)
+  // o "isVisible" cambia, así que el conteo de 6s —y la barra de progreso del
+  // dot activo, que dura lo mismo— siempre arranca de cero en el slide
+  // correcto y justo al entrar en pantalla (no intenta "recordar" cuánto
+  // llevaba antes de salir de pantalla).
+  useEffect(() => {
+    if (!playing || !isVisible) return;
     const next = active >= slides.length - 1 ? 0 : active + 1;
     const timer = setTimeout(() => scrollTo(next), AUTOPLAY_MS);
     return () => clearTimeout(timer);
-  }, [active, playing, slides.length, scrollTo]);
+  }, [active, playing, isVisible, slides.length, scrollTo]);
 
   // Swipe/arrastre manual en el track (no el scroll programático que dispara
   // scrollTo) pausa el autoplay, igual que un clic en un dot o una flecha.
@@ -170,7 +219,7 @@ export function Carousel({
   };
 
   return (
-    <div className="relative">
+    <div ref={wrapperRef} className="relative">
       <ul
         ref={trackRef}
         className="no-scrollbar relative left-1/2 flex w-screen -translate-x-1/2 snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-2 sm:gap-6"
@@ -305,7 +354,7 @@ export function Carousel({
                   {i === active ? (
                     <span
                       key={active}
-                      data-paused={!playing}
+                      data-paused={!playing || !isVisible}
                       className="carousel-progress absolute inset-0 block rounded-full bg-primary"
                     />
                   ) : null}
