@@ -154,14 +154,14 @@ export const content = {
         },
         {
           title: "Las Pozas de Edward James, Xilitla",
-          badge: "25 min",
+          badge: "30 min",
           description:
             "Jardín escultórico evocando al jardin del Edén donde el surrealismo cobra vida entre cascadas y flores.",
           alt: "Escaleras y columnas surrealistas cubiertas de vegetación",
         },
         {
           title: "Museo Leonora Carrington, Xilitla",
-          badge: "25 min",
+          badge: "30 min",
           description:
             "Pinturas, esculturas y objetos que revelan su fascinación por lo surreal, mágico y simbólico.",
           alt: "Fachada colorida de museo con escultura en la entrada",
@@ -183,7 +183,7 @@ export const content = {
         farImages,
         [
         {
-          title: "Río Tambaque",
+          title: "NAcimiento de Tambaque",
           badge: "40 min",
           description:
             "Río de aguas turquesa entre formaciones rocosas, perfecta para nadar y descansar.",
@@ -399,14 +399,14 @@ export const content = {
         },
         {
           title: "Las Pozas by Edward James, Xilitla",
-          badge: "25 min",
+          badge: "30 min",
           description:
             "A sculpture garden evoking the Garden of Eden, where surrealism comes to life among waterfalls and flowers.",
           alt: "Surrealist stairways and columns covered in vegetation",
         },
         {
           title: "Leonora Carrington Museum, Xilitla",
-          badge: "25 min",
+          badge: "30 min",
           description:
             "Paintings, sculptures and objects that reveal her fascination with the surreal, the magical and the symbolic.",
           alt: "Colorful museum facade with a sculpture at the entrance",
@@ -428,7 +428,7 @@ export const content = {
         farImages,
         [
         {
-          title: "Tambaque River",
+          title: "Tambaque spring",
           badge: "40 min",
           description:
             "Turquoise river among rock formations, perfect for swimming and relaxing.",
