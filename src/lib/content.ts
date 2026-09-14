@@ -183,7 +183,7 @@ export const content = {
         farImages,
         [
         {
-          title: "NAcimiento de Tambaque",
+          title: "Nacimiento de Tambaque",
           badge: "40 min",
           description:
             "Río de aguas turquesa entre formaciones rocosas, perfecta para nadar y descansar.",
